@@ -115,11 +115,9 @@ void Application::Run()
 		Az::Input::Update();
 		m_Window.Clear(0, 0, 0, 1);
 
-		//std::cout << 1 / Az::Timer::deltaTime << std::endl;
 
 		m_Scene.UpdateScene(Az::Timer::deltaTime);
-		//cpSpaceSetDamping(m_Scene.GetSpace(), 1.f); // Applies damping to all bodies
-
+		
 
 		ProcessEvents();
 
