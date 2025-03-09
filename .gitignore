@@ -33,6 +33,21 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+# Ignore x64 folder but allow Debug and Release subfolders
+x64/*
+!x64/Debug/
+!x64/Release/
+
+# Ignore build folders but allow .exe and .dll
+x64/Debug/*
+x64/Release/*
+
+!x64/Debug/*.exe
+!x64/Debug/*.dll
+!x64/Release/*.exe
+!x64/Release/*.dll
+
+
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
