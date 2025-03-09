@@ -13,9 +13,9 @@ namespace Az
 		Camera2D() = default;
 		Camera2D(float left, float right, float bottom, float top);
 
-		void setSize(float width, float height);
+		void SetSize(float width, float height);
 
-		glm::vec2 GetCameraSize() { return m_Size; }
+		glm::vec3 GetSize() { return m_Size; }
 
 		glm::vec3& GetPosition() { return m_Position; }
 		void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateViewMatrix(); }
@@ -37,7 +37,7 @@ namespace Az
 
 		glm::vec3 m_Position;
 
-		glm::vec2 m_Size;
+		glm::vec3 m_Size;
 
 		f64 m_Rotation;
 

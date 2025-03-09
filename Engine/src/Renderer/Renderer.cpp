@@ -434,6 +434,12 @@ namespace Az
 
     }
 
+    void Renderer::DrawLine(const glm::vec3& start, const glm::vec3& end, glm::vec4 color)
+    {
+        float thickness = 1.0f;
+        //float angle_radian = atan2(start.y - end.y)
+    }
+
     const Renderer::Stats& Renderer::GetStats()
     {
         return s_RenderData.Stats;

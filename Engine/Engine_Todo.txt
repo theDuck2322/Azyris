@@ -1,14 +1,18 @@
 Azyris Todo list:
 
 Done:
+	change from pixel pased coordinates to meter(shrink the orthographic camera, 
+		also rename the class and file to Camera2D)
 	improve the renderer
 	fix the chipmunk engine (collider class)
 	remove the Az::Shapes::rect (its annoying to use)
 
+TO do when programming again
+	add to renderer a draw line and a draw rect but not filled (using 4 drawing)
+
 
 Need to be done:
-	change from pixel pased coordinates to meter(shrink the orthographic camera, 
-		also rename the class and file to Camera2D)
+
 
 	add box2d to the engine so the engine will use 2 physics engine
 	make abstractions for box2d

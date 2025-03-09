@@ -34,7 +34,7 @@ public:
 public:
 
 	float health = 100;
-	float Speed = 500;
+	float Speed = 70;
 
 private:
 

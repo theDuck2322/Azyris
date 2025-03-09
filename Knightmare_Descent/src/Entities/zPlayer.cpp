@@ -4,7 +4,7 @@
 void zPlayer::Start()
 {
 	m_Dst.Position = glm::vec3(0, 0, 0);
-	m_Dst.Size = glm::vec3(250, 250 * (29.0f / 48.0f), 0);
+	m_Dst.Size = glm::vec3(30, 30 * (29.0f / 48.0f), 0);
 	m_Dst.rotation = 0;
 	initAnimManager();
 	initAnimations();

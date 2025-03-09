@@ -19,6 +19,7 @@ private: // CORE
 
 private: // Game stuff
 	Az::CP_Scene m_Scene;
+	MapManager m_World;
 
 	zPlayer m_Player;
 };

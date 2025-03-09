@@ -15,7 +15,7 @@ bool MapManager::LoadMap()
 
 	dst.Position = glm::vec3(0, 0, -9.0f);
 	dst.Position = glm::vec3(0, 0, -9);
-	dst.Size = glm::vec3(1024 * 7);
+	dst.Size = glm::vec3(1024);
 
 	Az::Texture ground;
 	ground.loadFromFile("Knightmare_Descent/Assets/Maps/Cavern_01/Cavern_01_Ground.png");

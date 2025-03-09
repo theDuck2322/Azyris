@@ -20,7 +20,7 @@ namespace Az
 		inline SDL_Window* GetWindow() { return m_Window; }
 		inline SDL_GLContext Get_GL_Context() { return m_GLContext; }
 
-		inline glm::vec2 getSize() { return glm::vec2(m_Width, m_Height); }
+		inline glm::vec2 GetSize() { return glm::vec2(m_Width, m_Height); }
 
 		inline void Clear(glm::vec4 clearColor)
 		{
@@ -38,12 +38,12 @@ namespace Az
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
-		inline bool shouldClose() { return m_ShouldClose; }
-		inline void setShouldClose(bool value) { m_ShouldClose = value; }
+		inline bool ShouldClose() { return m_ShouldClose; }
+		inline void SetShouldClose(bool value) { m_ShouldClose = value; }
 
 		inline void SwapBuffers() { SDL_GL_SwapWindow(m_Window); }
 
-		inline void setSize(uint32_t width, uint32_t height) { m_Width = width; m_Height = height; }
+		inline void SetSize(uint32_t width, uint32_t height) { m_Width = width; m_Height = height; }
 
 	public:
 
