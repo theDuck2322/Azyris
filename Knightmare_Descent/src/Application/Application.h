@@ -18,7 +18,7 @@ private: // CORE
 	Az::Shader m_Shader;
 
 private: // Game stuff
-	Az::Scene m_Scene;
+	Az::CP_Scene m_Scene;
 
 	zPlayer m_Player;
 };

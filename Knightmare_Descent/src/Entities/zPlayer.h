@@ -18,14 +18,13 @@ class zPlayer
 {
 public:
 	zPlayer() = default;
-	zPlayer(Az::Shapes::Rect& dst);
 
-	inline Az::Shapes::Rect& GetDST() { return m_Dst; }
-	inline Az::Shapes::Rect* GetSRC() { return &m_SRC; }
+	inline Az::Rect& GetDST() { return m_Dst; }
+	inline Az::Rect* GetSRC() { return &m_SRC; }
 
 	inline bool playerFlipped() { return m_IsFlippedX; }
 
-	void Start(Az::Shapes::Rect& dst);
+	void Start();
 	void Update();
 
 	inline void SetTexture(Az::Texture texture) { m_Texture = texture; }
@@ -46,11 +45,11 @@ private:
 	void handleAnimation();
 
 
-	Az::BoxCollider2D m_Collider;
+	Az::CP_BoxCollider2D m_Collider;
 
 	glm::vec3 m_Direction = GLM_VEC3_ZERO;
-	Az::Shapes::Rect m_Dst;
-	Az::Shapes::Rect m_SRC;
+	Az::Rect m_Dst;
+	Az::Rect m_SRC;
 
 	Az::Texture m_Texture;
 

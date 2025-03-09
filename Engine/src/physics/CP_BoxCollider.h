@@ -14,20 +14,24 @@ namespace Az
 	};
 
 
-	class BoxCollider2D
+	class CP_BoxCollider2D
 	{
 	public:
-		BoxCollider2D() = default;
+		CP_BoxCollider2D() = default;
 
 		static void SetScene(cpSpace* space);
 
 
-		void CreateCollider(Az::Shapes::Rect& dst, ColliderType type = Az::ColliderType::STATIC);
-		// u have to specify the center of the rect
+		void CreateCollider(Az::Rect& dst, ColliderType type = Az::ColliderType::STATIC);
 		void CreateCollider(const glm::vec3& position, const glm::vec3& size, ColliderType type = Az::ColliderType::STATIC);
 
 		void SetPosition(glm::vec3 position);
 		void SetVelocity(glm::vec3 direction, float speed);
+
+		inline float GetAngle() { return Az::toDegrees(cpBodyGetAngle(m_Body)); }
+
+		inline cpBody* GetBody() { return m_Body; }
+		inline cpShape* GetShape() { return m_Shape; }
 
 		glm::vec2 GetPosition();
 

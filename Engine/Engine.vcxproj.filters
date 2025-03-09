@@ -1308,10 +1308,10 @@
     <ClInclude Include="vendors\Chipmunk2D\src\prime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\physics\boxCollider.h">
+    <ClInclude Include="src\physics\CP_BoxCollider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\physics\AZScene.h">
+    <ClInclude Include="src\physics\CP_Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vendors\Box2D\box2d\b2_api.h">
@@ -1604,10 +1604,10 @@
     <ClCompile Include="vendors\Chipmunk2D\src\cpSweep1D.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\physics\boxCollider.cpp">
+    <ClCompile Include="src\physics\CP_BoxCollider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\physics\AZScene.cpp">
+    <ClCompile Include="src\physics\CP_Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="vendors\Box2D\src\collision\b2_broad_phase.cpp">

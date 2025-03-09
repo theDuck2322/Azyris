@@ -1,17 +1,17 @@
 Azyris Todo list:
 
 Done:
+	improve the renderer
+	fix the chipmunk engine (collider class)
+	remove the Az::Shapes::rect (its annoying to use)
 
 
 Need to be done:
-	improve the renderer
-	fix the chipmunk engine (collider class)
 	change from pixel pased coordinates to meter(shrink the orthographic camera, 
-		also rename the class and file to Camera2D) 50%
+		also rename the class and file to Camera2D)
 
 	add box2d to the engine so the engine will use 2 physics engine
 	make abstractions for box2d
 	make a particle system
 	add different shapes to the batch renderer
-	remove the Az::Shapes::rect (its annoying to use)
 

@@ -5,11 +5,11 @@
 
 namespace Az
 {
-	class Scene
+	class CP_Scene
 	{
 	public:
 
-		Scene() = default;
+		CP_Scene() = default;
 		void CreateSpace(glm::vec2 gravity);
 		void SetGravity(glm::vec2 gravity);
 

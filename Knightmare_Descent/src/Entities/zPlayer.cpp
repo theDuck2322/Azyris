@@ -1,20 +1,16 @@
 #include "zPlayer.h"
 
-zPlayer::zPlayer(Az::Shapes::Rect& dst)
-{
-	Az::Shapes::Rect _dst;
-	dst.rotation = 0;
-	Start(_dst);
-}
 
-
-void zPlayer::Start(Az::Shapes::Rect& dst)
+void zPlayer::Start()
 {
-	m_Dst = dst;
+	m_Dst.Position = glm::vec3(0, 0, 0);
+	m_Dst.Size = glm::vec3(250, 250 * (29.0f / 48.0f), 0);
+	m_Dst.rotation = 0;
 	initAnimManager();
 	initAnimations();
 
-	m_Collider.CreateCollider(dst, Az::ColliderType::DYNAMIC);
+	m_Collider.CreateCollider(m_Dst, Az::ColliderType::DYNAMIC);
+	cpBodySetAngle(m_Collider.GetBody(), 0.0f);
 }
 
 void zPlayer::Update()
@@ -113,7 +109,6 @@ void zPlayer::getDirection()
 
 void zPlayer::Move()
 {
-
 	m_Collider.SetVelocity(m_Direction, Speed);
 
 	glm::vec2 pos = glm::vec2(0.0f);
@@ -121,24 +116,15 @@ void zPlayer::Move()
 	pos = m_Collider.GetPosition();
 	m_Dst.Position.x = pos.x;
 	m_Dst.Position.y = pos.y;
-	
+
+	cpBodySetAngle(m_Collider.GetBody(), 0.0f);
+
+	m_Dst.rotation = m_Collider.GetAngle();
+
 	if (m_Direction.x == 1)
 		m_IsFlippedX = false;
 	if (m_Direction.x == -1)
 		m_IsFlippedX = true;
-	/*
-	
-	if (m_Direction.x != 0 && m_Direction.y != 0)
-	{
-		m_Dst.Position += m_Direction * (Speed / (float)sqrt(2)) * (float)Az::Timer::deltaTime;
-	}
-	else
-	{
-		m_Dst.Position += m_Direction * Speed * (float)Az::Timer::deltaTime;
-	}
-
-	*/
-
 }
 
 void zPlayer::handleAnimation()

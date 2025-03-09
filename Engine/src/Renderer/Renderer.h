@@ -29,16 +29,12 @@ namespace Az
         static void Flush();
 
         // QUICK functions
-        static void DrawQuad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color);
-        static void DrawQuad(const glm::vec3& position, const glm::vec3& size, uint32_t textureID);
+        static void DrawQuad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, float degree = 0);
+        static void DrawQuad(const glm::vec3& position, const glm::vec3& size, uint32_t textureID, float degree = 0);
 
-        [[deprecated("This function is outdated, use the new one instead.")]]
-        static void DrawQuadOLD(Az::Shapes::Rect& dst, Az::Shapes::Rect* src, Az::Texture texture, bool flipX = 0);
-        [[deprecated("This function is outdated, use the new one instead.")]]
-        static void DrawQuadOLD(Az::Shapes::Rect& dst, glm::vec4& color);
 
-        static void DrawQuad(Az::Shapes::Rect& dst, Az::Shapes::Rect* src, Az::Texture texture, bool flipX = 0);
-        static void DrawQuad(Az::Shapes::Rect& dst, const glm::vec4& color);
+        static void DrawQuad(Az::Rect& dst, Az::Rect* src, Az::Texture texture, bool flipX = 0);
+        static void DrawQuad(Az::Rect& dst, const glm::vec4& color);
 
         inline static bool batchRunning() { return m_IsBatchRunning; }
 

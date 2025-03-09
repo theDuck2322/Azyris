@@ -82,31 +82,32 @@ void Application::Run()
 	Az::Renderer::Init();
 
 	m_Scene.CreateSpace(glm::vec2(0.0f, 0.0f));
-	Az::BoxCollider2D::SetScene(m_Scene.GetSpace());
-	Az::Shapes::Rect dst;
+	Az::CP_BoxCollider2D::SetScene(m_Scene.GetSpace());
+	Az::Rect dst;
 	dst.Position = glm::vec3(0, 0, 0);
-	dst.Size = glm::vec3(250, 250 * 29.0f / 48.0f, 1);
+
+	float sy = 250 * (29.0f / 48.0f);
+
+	dst.Size = glm::vec3(250, sy, 1);
 	MapManager m_World;
 
 	m_World.LoadMap();
-	Az::Shapes::Rect p;
+	Az::Rect p;
 	
 	p.Position = glm::vec3(0, 0, -9);
 	p.Size = glm::vec3(1024 * 7);
 
-	Az::Shapes::Rect col; // 3, 15 12
+	Az::Rect col;
 	col.Position = glm::vec3(16, 16, 0);
-	//col.Position = glm::vec3(0);
 	col.Size = glm::vec3(16 * 7 * 13, 16* 7, 1);
 	
 	glm::vec4 color = glm::vec4(1.0f);
 
-	Az::BoxCollider2D wallCol;
+	Az::CP_BoxCollider2D wallCol;
 	wallCol.CreateCollider(col);
 
-	m_Player.Start(dst);
+	m_Player.Start();
 	m_Player.SetTexture(texture);
-
 
 
 	while (!m_Window.shouldClose())
@@ -132,11 +133,9 @@ void Application::Run()
 		Az::Renderer::BeginBatch();
 		
 		Az::Renderer::DrawQuad(col, color);
-
 		Az::Renderer::DrawQuad(m_Player.GetDST(), m_Player.GetSRC(), m_Player.GetTexture(), m_Player.playerFlipped());
-		Az::Renderer::DrawQuad(m_Player.GetDST(), glm::vec4(1, 0, 0, 1));
-		//Az::BatchRenderer::DrawQuad(glm::vec3(m_Player.GetDST().Position.x, m_Player.GetDST().Position.y, 10), glm::vec3(m_Player.GetDST().Size.y), glm::vec4(0, 1, 0, 1));
 
+		// Debug visualization
 		m_World.RenderMap();
 
 		Az::Renderer::EndBatch();

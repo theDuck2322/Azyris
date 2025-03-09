@@ -147,7 +147,7 @@ namespace Az
         s_RenderData.IndexCount = 0;
     }
 
-    void Renderer::DrawQuad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color)
+    void Renderer::DrawQuad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, float degree)
     {
         if (s_RenderData.IndexCount >= MaxIndexCount)
         {
@@ -162,6 +162,14 @@ namespace Az
         glm::vec3 d2 = { position.x + (size.x / 2.0f), position.y - (size.y / 2.0f), position.z };
         glm::vec3 d3 = { position.x + (size.x / 2.0f), position.y + (size.y / 2.0f), position.z };
         glm::vec3 d4 = { position.x - (size.x / 2.0f), position.y + (size.y / 2.0f), position.z };
+
+        if (degree != 0.0f)
+        {
+            d1 = rotatePoint(d1, position, toRadians(degree));
+            d2 = rotatePoint(d2, position, toRadians(degree));
+            d3 = rotatePoint(d3, position, toRadians(degree));
+            d4 = rotatePoint(d4, position, toRadians(degree));
+        }
 
         s_RenderData.QuadBufferPtr->Position = d1;
         s_RenderData.QuadBufferPtr->Color = color;
@@ -191,7 +199,7 @@ namespace Az
         s_RenderData.Stats.QuadCount++;
     }
 
-    void Renderer::DrawQuad(const glm::vec3& position, const glm::vec3& size, uint32_t textureID)
+    void Renderer::DrawQuad(const glm::vec3& position, const glm::vec3& size, uint32_t textureID, float degree)
     {
         if (s_RenderData.IndexCount >= MaxIndexCount || s_RenderData.TextureSlotIndex >= MaxTextures)
         {
@@ -224,6 +232,14 @@ namespace Az
         glm::vec3 d3 = { position.x + (size.x / 2.0f), position.y + (size.y / 2.0f), position.z };
         glm::vec3 d4 = { position.x - (size.x / 2.0f), position.y + (size.y / 2.0f), position.z };
 
+        if (degree != 0.0f)
+        {
+            d1 = rotatePoint(d1, position, toRadians(degree));
+            d2 = rotatePoint(d2, position, toRadians(degree));
+            d3 = rotatePoint(d3, position, toRadians(degree));
+            d4 = rotatePoint(d4, position, toRadians(degree));
+        }
+
         s_RenderData.QuadBufferPtr->Position = d1;
         s_RenderData.QuadBufferPtr->Color = glm::vec4(1.0f);
         s_RenderData.QuadBufferPtr->TexCoord = { 0.0f, 0.0f };
@@ -252,7 +268,7 @@ namespace Az
         s_RenderData.Stats.QuadCount++;
     }
 
-    void Renderer::DrawQuadOLD(Az::Shapes::Rect& dst, Az::Shapes::Rect* src, Az::Texture texture, bool flipX)
+    void Renderer::DrawQuad(Az::Rect& dst, Az::Rect* src, Az::Texture texture, bool flipX)
     {
         if (s_RenderData.IndexCount >= MaxIndexCount || s_RenderData.TextureSlotIndex >= MaxTextures)
         {
@@ -261,145 +277,7 @@ namespace Az
             BeginBatch();
         }
 
-        Az::Shapes::Rect _src = {};
-
-        if (src == nullptr)
-        {
-            _src.Position = glm::vec3(0, 0, 0);
-            _src.Size = glm::vec3(texture.GetSize(), 0);
-        }
-        else
-        {
-            _src = *src;
-        }
-
-        float textW = texture.GetSize().x;
-        float textH = texture.GetSize().y;
-
-        f32 invTextW = 1.0f / textW;
-        f32 invTextH = 1.0f / textH;
-
-        glm::vec2 p1 = { _src.Position.x, _src.Position.y };                              // Top-left
-        glm::vec2 p2 = { _src.Position.x, _src.Position.y + _src.Size.y };                // Bottom-left
-        glm::vec2 p3 = { _src.Position.x + _src.Size.x, _src.Position.y + _src.Size.y };  // Bottom-right
-        glm::vec2 p4 = { _src.Position.x + _src.Size.x, _src.Position.y };                // Top-right
-
-        if (flipX)
-        {
-            std::swap(p1, p4);
-            std::swap(p2, p3);
-        }
-
-        p1 = glm::vec2(p1.x * invTextW, 1.0f - (p1.y * invTextH)); // Top-left
-        p2 = glm::vec2(p2.x * invTextW, 1.0f - (p2.y * invTextH)); // Bottom-left
-        p3 = glm::vec2(p3.x * invTextW, 1.0f - (p3.y * invTextH)); // Bottom-right
-        p4 = glm::vec2(p4.x * invTextW, 1.0f - (p4.y * invTextH)); // Top-right
-
-        glm::vec2 temp = p1;
-        p1 = p2; // Move bottom-left to top-left
-        p2 = p3; // Move bottom-right to bottom-left
-        p3 = p4; // Move top-right to bottom-right
-        p4 = temp; // Move original top-left to top-right
-
-
-        // Find texture index
-        float textureIndex = 0.0f;
-        for (size_t i = 1; i < s_RenderData.TextureSlotIndex; i++)
-        {
-            if (s_RenderData.TextureSlots[i] == texture.GetID())
-            {
-                textureIndex = (float)i;
-                break;
-            }
-        }
-
-        // Add texture if it's not found
-        if (textureIndex == 0.0f)
-        {
-            textureIndex = (float)s_RenderData.TextureSlotIndex;
-            s_RenderData.TextureSlots[s_RenderData.TextureSlotIndex] = texture.GetID();
-            s_RenderData.TextureSlotIndex++;
-        }
-
-        s_RenderData.QuadBufferPtr->Position = dst.Position;
-        s_RenderData.QuadBufferPtr->Color = glm::vec4(1.0f);
-        s_RenderData.QuadBufferPtr->TexCoord = { p1 };
-        s_RenderData.QuadBufferPtr->TexIndex = textureIndex;
-        s_RenderData.QuadBufferPtr++;
-
-        s_RenderData.QuadBufferPtr->Position = { dst.Position.x + dst.Size.x, dst.Position.y, dst.Position.z };
-        s_RenderData.QuadBufferPtr->Color = glm::vec4(1.0f);
-        s_RenderData.QuadBufferPtr->TexCoord = { p2 };
-        s_RenderData.QuadBufferPtr->TexIndex = textureIndex;
-        s_RenderData.QuadBufferPtr++;
-
-        s_RenderData.QuadBufferPtr->Position = { dst.Position.x + dst.Size.x, dst.Position.y + dst.Size.y, dst.Position.z };
-        s_RenderData.QuadBufferPtr->Color = glm::vec4(1.0f);
-        s_RenderData.QuadBufferPtr->TexCoord = { p3 };
-        s_RenderData.QuadBufferPtr->TexIndex = textureIndex;
-        s_RenderData.QuadBufferPtr++;
-
-        s_RenderData.QuadBufferPtr->Position = { dst.Position.x, dst.Position.y + dst.Size.y, dst.Position.z };
-        s_RenderData.QuadBufferPtr->Color = glm::vec4(1.0f);
-        s_RenderData.QuadBufferPtr->TexCoord = { p4 };
-        s_RenderData.QuadBufferPtr->TexIndex = textureIndex;
-        s_RenderData.QuadBufferPtr++;
-
-        s_RenderData.IndexCount += 6;
-        s_RenderData.Stats.QuadCount++;
-
-    }
-
-    void Renderer::DrawQuadOLD(Az::Shapes::Rect& dst, glm::vec4& color)
-    {
-        if (s_RenderData.IndexCount >= MaxIndexCount || s_RenderData.TextureSlotIndex >= MaxTextures)
-        {
-            EndBatch();
-            Flush();
-            BeginBatch();
-        }
-
-        float textureIndex = 0.0f; // white texture
-
-        s_RenderData.QuadBufferPtr->Position = dst.Position;
-        s_RenderData.QuadBufferPtr->Color = color;
-        s_RenderData.QuadBufferPtr->TexCoord = { 0.0f, 0.0f };
-        s_RenderData.QuadBufferPtr->TexIndex = textureIndex;
-        s_RenderData.QuadBufferPtr++;
-
-        s_RenderData.QuadBufferPtr->Position = { dst.Position.x + dst.Size.x, dst.Position.y, dst.Position.z };
-        s_RenderData.QuadBufferPtr->Color = color;
-        s_RenderData.QuadBufferPtr->TexCoord = { 1.0f, 0.0f };
-        s_RenderData.QuadBufferPtr->TexIndex = textureIndex;
-        s_RenderData.QuadBufferPtr++;
-
-        s_RenderData.QuadBufferPtr->Position = { dst.Position.x + dst.Size.x, dst.Position.y + dst.Size.y, dst.Position.z };
-        s_RenderData.QuadBufferPtr->Color = color;
-        s_RenderData.QuadBufferPtr->TexCoord = { 1.0f, 1.0f };
-        s_RenderData.QuadBufferPtr->TexIndex = textureIndex;
-        s_RenderData.QuadBufferPtr++;
-
-        s_RenderData.QuadBufferPtr->Position = { dst.Position.x, dst.Position.y + dst.Size.y, dst.Position.z };
-        s_RenderData.QuadBufferPtr->Color = color;
-        s_RenderData.QuadBufferPtr->TexCoord = { 0.0f, 1.0f };
-        s_RenderData.QuadBufferPtr->TexIndex = textureIndex;
-        s_RenderData.QuadBufferPtr++;
-
-        s_RenderData.IndexCount += 6;
-        s_RenderData.Stats.QuadCount++;
-
-    }
-
-    void Renderer::DrawQuad(Az::Shapes::Rect& dst, Az::Shapes::Rect* src, Az::Texture texture, bool flipX)
-    {
-        if (s_RenderData.IndexCount >= MaxIndexCount || s_RenderData.TextureSlotIndex >= MaxTextures)
-        {
-            EndBatch();
-            Flush();
-            BeginBatch();
-        }
-
-        Az::Shapes::Rect _src = {};
+        Az::Rect _src = {};
 
         if (src == nullptr)
         {
@@ -503,7 +381,7 @@ namespace Az
 
     }
 
-    void Renderer::DrawQuad(Az::Shapes::Rect& dst, const glm::vec4& color)
+    void Renderer::DrawQuad(Az::Rect& dst, const glm::vec4& color)
     {
         if (s_RenderData.IndexCount >= MaxIndexCount || s_RenderData.TextureSlotIndex >= MaxTextures)
         {

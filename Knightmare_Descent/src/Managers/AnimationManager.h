@@ -38,7 +38,7 @@ public:
 	AnimationManager(AnimationManagerDef& animDef);
 	void init(AnimationManagerDef& animDef);
 
-	Az::Shapes::Rect getFrameSRC();
+	Az::Rect getFrameSRC();
 
 	void Update();
 	void RunAnimation(AnimationInfo& info);
@@ -60,7 +60,7 @@ private:
 	uint32_t m_CurrentFrameX;
 	uint32_t m_CurrentFrameY;
 
-	Az::Shapes::Rect m_CurrentSRC;
+	Az::Rect m_CurrentSRC;
 
 	float m_FrameDuration;
 	float m_CurrentTime;

@@ -141,8 +141,8 @@
     <ClInclude Include="src\buffers\VBO.h" />
     <ClInclude Include="src\core\Input.h" />
     <ClInclude Include="src\core\Window.h" />
-    <ClInclude Include="src\physics\AZScene.h" />
-    <ClInclude Include="src\physics\boxCollider.h" />
+    <ClInclude Include="src\physics\CP_Scene.h" />
+    <ClInclude Include="src\physics\CP_BoxCollider.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
     <ClInclude Include="src\Renderer\Camera2D.h" />
     <ClInclude Include="src\Renderer\Shader.h" />
@@ -623,8 +623,8 @@
     <ClCompile Include="src\buffers\VBO.cpp" />
     <ClCompile Include="src\core\Input.cpp" />
     <ClCompile Include="src\core\Window.cpp" />
-    <ClCompile Include="src\physics\boxCollider.cpp" />
-    <ClCompile Include="src\physics\AZScene.cpp" />
+    <ClCompile Include="src\physics\CP_BoxCollider.cpp" />
+    <ClCompile Include="src\physics\CP_Scene.cpp" />
     <ClCompile Include="src\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Renderer\Camera2D.cpp" />
     <ClCompile Include="src\Renderer\Shader.cpp" />

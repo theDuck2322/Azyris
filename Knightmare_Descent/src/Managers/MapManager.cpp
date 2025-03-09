@@ -9,7 +9,7 @@ MapManager::MapManager()
 bool MapManager::LoadMap()
 {
 	m_Textures.resize(10);
-	Az::Shapes::Rect dst;
+	Az::Rect dst;
 
 	int i = 0;
 
@@ -67,7 +67,7 @@ bool MapManager::LoadMap()
 	return EXIT_SUCCESS;
 }
 
-std::vector<Az::Shapes::Rect>& MapManager::GetLayers()
+std::vector<Az::Rect>& MapManager::GetLayers()
 {
 	return m_Layers;
 }

@@ -40,21 +40,12 @@ namespace Az
 
     struct Rect
     {
-        float x, y;
-        float w, h;
+        glm::vec3 Position = glm::vec3(0.0f);
+        glm::vec3 Size = glm::vec3(0.0f);
+
+        // degree
+        float rotation = 0.0f;
     };
-
-    namespace Shapes
-    {
-        struct Rect
-        {
-            glm::vec3 Position = glm::vec3(0.0f);
-            glm::vec3 Size = glm::vec3(0.0f);
-
-            // degree
-            float rotation = 0.0f;
-        };
-    }
 
     float toDegrees(float radian);
 

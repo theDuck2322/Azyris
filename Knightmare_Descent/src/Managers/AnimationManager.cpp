@@ -39,7 +39,7 @@ void AnimationManager::init(AnimationManagerDef& animDef)
 	m_AnimDefIsInit = true;
 }
 
-Az::Shapes::Rect AnimationManager::getFrameSRC()
+Az::Rect AnimationManager::getFrameSRC()
 {
 	return m_CurrentSRC;
 }

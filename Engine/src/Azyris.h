@@ -43,8 +43,8 @@
 #include <core/Window.h>
 #include <core/Input.h>
 
-#include <physics/AZScene.h>
-#include <physics/boxCollider.h>
+#include <physics/CP_Scene.h>
+#include <physics/CP_BoxCollider.h>
 
 #include <Renderer/Renderer.h>
 
