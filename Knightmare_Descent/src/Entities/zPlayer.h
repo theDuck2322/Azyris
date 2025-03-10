@@ -34,7 +34,7 @@ public:
 public:
 
 	float health = 100;
-	float Speed = 70;
+	float Speed = 500;
 
 private:
 
@@ -45,7 +45,8 @@ private:
 	void handleAnimation();
 
 
-	Az::CP_BoxCollider2D m_Collider;
+	//Az::CP_BoxCollider2D m_Collider;
+	Az::B2_BoxCollider m_Collider;
 
 	glm::vec3 m_Direction = GLM_VEC3_ZERO;
 	Az::Rect m_Dst;

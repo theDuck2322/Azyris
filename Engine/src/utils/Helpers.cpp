@@ -33,6 +33,11 @@ namespace Az
 
     }
 
+    float DistanceBetweenPoints(const glm::vec3& p1, const glm::vec3& p2)
+    {
+        return sqrt((p2.x - p1.x)*(p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
+    }
+
     glm::vec3 rotatePoint(glm::vec3 point, glm::vec3 ref, float rad)
     {
         glm::mat4 rotationMatrix = glm::rotate(rad, glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
@@ -40,6 +45,16 @@ namespace Az
         glm::vec4 translatedPoint = glm::vec4(point - ref, 1.0f); // Move point relative to ref
         glm::vec4 rotatedPoint = rotationMatrix * translatedPoint; // Apply rotation
         return glm::vec3(rotatedPoint) + ref; // Move point back
+    }
+
+    float PixelsToMeters(float pixels)
+    {
+        return pixels / PIXEL_PER_METER;
+    }
+
+    float MetersToPixels(float meters)
+    {
+        return meters * PIXEL_PER_METER;
     }
 
 

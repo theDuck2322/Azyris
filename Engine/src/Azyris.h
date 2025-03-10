@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 
 #include <Chipmunk2D/chipmunk/chipmunk.h>
-
+#include <Box2D/box2d/box2d.h>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
@@ -43,6 +43,8 @@
 #include <core/Window.h>
 #include <core/Input.h>
 
+#include <physics/B2_Scene.h>
+#include <physics/B2_BoxCollider.h>
 #include <physics/CP_Scene.h>
 #include <physics/CP_BoxCollider.h>
 

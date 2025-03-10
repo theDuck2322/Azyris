@@ -434,10 +434,43 @@ namespace Az
 
     }
 
-    void Renderer::DrawLine(const glm::vec3& start, const glm::vec3& end, glm::vec4 color)
+    void Renderer::DrawLine(const glm::vec3& start, const glm::vec3& end, const glm::vec4& color, float thickness)
     {
-        float thickness = 1.0f;
-        //float angle_radian = atan2(start.y - end.y)
+        float angle = Az::toDegrees(atan2(start.y - end.y, start.x - end.x));
+        
+        float length = Az::DistanceBetweenPoints(start, end);
+
+        glm::vec3 midPoint = glm::vec3((start.x + end.x) / 2.0f, (start.y + end.y) / 2.0f, start.z);
+
+        Az::Rect rect;
+        rect.Position = midPoint;
+        rect.Size = glm::vec3(length, thickness, 1);
+        rect.rotation = angle;
+
+        DrawQuad(rect, color);
+    }
+
+    void Renderer::DrawRect(const glm::vec3& position, const glm::vec3& size, float degree, const glm::vec4& color, float thickness)
+    {
+        glm::vec3 p1 = glm::vec3(position.x - (size.x / 2.0f), position.y - (size.y / 2.0f), position.z);
+        glm::vec3 p2 = glm::vec3(position.x - (size.x / 2.0f), position.y + (size.y / 2.0f), position.z);
+        glm::vec3 p3 = glm::vec3(position.x + (size.x / 2.0f), position.y + (size.y / 2.0f), position.z);
+        glm::vec3 p4 = glm::vec3(position.x + (size.x / 2.0f), position.y - (size.y / 2.0f), position.z);
+
+        p1 = rotatePoint(p1, position, toRadians(degree));
+        p2 = rotatePoint(p2, position, toRadians(degree));
+        p3 = rotatePoint(p3, position, toRadians(degree));
+        p4 = rotatePoint(p4, position, toRadians(degree));
+
+        DrawLine(p1, p2, color, thickness);
+        DrawLine(p2, p3, color, thickness);
+        DrawLine(p3, p4, color, thickness);
+        DrawLine(p4, p1, color, thickness);
+    }
+
+    void Renderer::DrawRect(Az::Rect& dst, const glm::vec4& color, float thickness)
+    {
+        DrawRect(dst.Position, dst.Size, dst.rotation, color, thickness);
     }
 
     const Renderer::Stats& Renderer::GetStats()

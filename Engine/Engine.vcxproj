@@ -141,6 +141,8 @@
     <ClInclude Include="src\buffers\VBO.h" />
     <ClInclude Include="src\core\Input.h" />
     <ClInclude Include="src\core\Window.h" />
+    <ClInclude Include="src\physics\B2_BoxCollider.h" />
+    <ClInclude Include="src\physics\B2_Scene.h" />
     <ClInclude Include="src\physics\CP_Scene.h" />
     <ClInclude Include="src\physics\CP_BoxCollider.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
@@ -623,6 +625,8 @@
     <ClCompile Include="src\buffers\VBO.cpp" />
     <ClCompile Include="src\core\Input.cpp" />
     <ClCompile Include="src\core\Window.cpp" />
+    <ClCompile Include="src\physics\B2_BoxCollider.cpp" />
+    <ClCompile Include="src\physics\B2_Scene.cpp" />
     <ClCompile Include="src\physics\CP_BoxCollider.cpp" />
     <ClCompile Include="src\physics\CP_Scene.cpp" />
     <ClCompile Include="src\Renderer\Renderer.cpp" />

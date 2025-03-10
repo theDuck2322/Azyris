@@ -6,16 +6,13 @@ Done:
 	improve the renderer
 	fix the chipmunk engine (collider class)
 	remove the Az::Shapes::rect (its annoying to use)
-
-TO do when programming again
-	add to renderer a draw line and a draw rect but not filled (using 4 drawing)
-
-
-Need to be done:
-
-
+	add to renderer a draw line and a draw rect but not filled (using 4 drawing)	
+	make a converter for box2d position and size
 	add box2d to the engine so the engine will use 2 physics engine
 	make abstractions for box2d
+
+Need to be done:
+	
 	make a particle system
 	add different shapes to the batch renderer
-
+	add different shapes to the physics engine

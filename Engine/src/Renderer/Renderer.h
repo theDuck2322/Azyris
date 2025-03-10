@@ -35,7 +35,11 @@ namespace Az
         static void DrawQuad(Az::Rect& dst, Az::Rect* src, Az::Texture texture, bool flipX = 0);
         static void DrawQuad(Az::Rect& dst, const glm::vec4& color);
         
-        static void DrawLine(const glm::vec3& start, const glm::vec3& end, glm::vec4 color);
+        static void DrawLine(const glm::vec3& start, const glm::vec3& end, const glm::vec4& color, float thickness = 2.5f);
+
+        static void DrawRect(const glm::vec3& position, const glm::vec3& size, float degree, const glm::vec4& color, float thickness = 2.5f);
+        static void DrawRect(Az::Rect& dst, const glm::vec4& color, float thickness = 2.5f);
+
 
         inline static bool batchRunning() { return m_IsBatchRunning; }
 

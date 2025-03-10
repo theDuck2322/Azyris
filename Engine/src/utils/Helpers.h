@@ -17,26 +17,11 @@
         } \
     } while (false)
 
+const float PIXEL_PER_METER = 100.0f;
+
+
 namespace Az
 {
-
-    struct Transform
-    {
-        glm::vec3 Translation = glm::vec3(0.0f);
-        glm::vec3 Scale = glm::vec3(1.0f);
-        glm::vec3 Rotation = glm::vec3(0.0f, 0.0f, 1.0f);
-        float Angle = 0;
-
-        inline glm::mat4 getCalculatedModel()
-        {
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, Translation);
-            model = glm::rotate(model, Angle, Rotation);
-            model = glm::scale(model, Scale);
-
-            return model;
-        }
-    };
 
     struct Rect
     {
@@ -63,7 +48,13 @@ namespace Az
 
     void SetWorkingDir();
 
+    float DistanceBetweenPoints(const glm::vec3& p1, const glm::vec3& p2);
+
     glm::vec3 rotatePoint(glm::vec3 point, glm::vec3 ref, float rad);
+
+    float PixelsToMeters(float pixels);
+
+    float MetersToPixels(float meters);
 
 };
 

@@ -6,7 +6,7 @@
 
 namespace Az
 {
-	enum class ColliderType
+	enum class CP_ColliderType
 	{
 		STATIC,
 		DYNAMIC,
@@ -22,8 +22,8 @@ namespace Az
 		static void SetScene(cpSpace* space);
 
 
-		void CreateCollider(Az::Rect& dst, ColliderType type = Az::ColliderType::STATIC);
-		void CreateCollider(const glm::vec3& position, const glm::vec3& size, ColliderType type = Az::ColliderType::STATIC);
+		void CreateCollider(Az::Rect& dst, CP_ColliderType type = Az::CP_ColliderType::STATIC);
+		void CreateCollider(const glm::vec3& position, const glm::vec3& size, CP_ColliderType type = Az::CP_ColliderType::STATIC);
 
 		void SetPosition(glm::vec3 position);
 		void SetVelocity(glm::vec3 direction, float speed);
@@ -40,7 +40,7 @@ namespace Az
 
 	private:
 
-		ColliderType m_ColliderType;
+		CP_ColliderType m_ColliderType;
 
 		//Az::Shapes::Rect m_DST;
 		cpBody* m_Body;
