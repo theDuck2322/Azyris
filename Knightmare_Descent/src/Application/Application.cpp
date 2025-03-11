@@ -87,20 +87,23 @@ void Application::Run()
 	Az::Texture texture;
 	texture.loadFromFile("Knightmare_Descent/Assets/Entities/Soldier.png");
 	
+	m_CPScene.CreateSpace(glm::vec2(0.0f, 0.0f));
+	Az::CP_BoxCollider2D::SetScene(m_CPScene.GetSpace());
+
+	m_B2Scene.CreateScene(glm::vec3(0, 0, 0));
+	Az::B2_BoxCollider::SetScene(m_B2Scene.GetScene());
+
 	Az::Input::Init();
 
 	Az::Renderer::BindCamera(&m_Camera);
 	Az::Renderer::BindShader(&m_Shader);
 	Az::Renderer::Init();
 
-	m_CPScene.CreateSpace(glm::vec2(0.0f, 0.0f));
-	Az::CP_BoxCollider2D::SetScene(m_CPScene.GetSpace());
 
-	m_B2Scene.CreateScene(glm::vec3(0, 0, 0));
-	Az::B2_BoxCollider::SetScene(m_B2Scene.GetScene());
 	m_B2Scene.SetIterations();
 
 	m_World.LoadMap();
+	m_World.CreateColliders();
 
 	Az::Rect col;
 	col.Position = glm::vec3(16, 16, 0);
@@ -146,6 +149,7 @@ void Application::Run()
 		Az::Renderer::ResetStats();
 		Az::Renderer::BeginBatch();
 
+
 		Az::Renderer::DrawQuad(groundDST, glm::vec4(1));
 		glm::vec2 p = box.GetPosition();
 		boxDST.Position = glm::vec3(p, boxDST.Position.z);
@@ -153,7 +157,7 @@ void Application::Run()
 
 
 		Az::Renderer::DrawQuad(m_Player.GetDST(), m_Player.GetSRC(), m_Player.GetTexture(), m_Player.playerFlipped());
-		Az::Renderer::DrawRect(m_Player.GetDST(), glm::vec4(1, 0, 0, 1));
+		//Az::Renderer::DrawRect(m_Player.GetDST(), glm::vec4(1, 0, 0, 1));
 		m_World.RenderMap();
 
 		Az::Renderer::EndBatch();

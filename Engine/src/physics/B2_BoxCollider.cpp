@@ -6,6 +6,16 @@ namespace Az
 	b2World* B2_BoxCollider::m_World = nullptr;
 
 
+	B2_BoxCollider::B2_BoxCollider(Az::Rect& dst, B2_ColliderType type)
+	{
+		CreateCollider(dst, type);
+	}
+
+	B2_BoxCollider::B2_BoxCollider(const glm::vec3& position, const glm::vec3& size, float degree, B2_ColliderType type)
+	{
+		CreateCollider(position, size, degree, type);
+	}
+
 	void B2_BoxCollider::SetScene(b2World* scene)
 	{
 		m_World = scene;

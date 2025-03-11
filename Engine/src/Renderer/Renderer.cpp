@@ -450,7 +450,7 @@ namespace Az
         DrawQuad(rect, color);
     }
 
-    void Renderer::DrawRect(const glm::vec3& position, const glm::vec3& size, float degree, const glm::vec4& color, float thickness)
+    void Renderer::DrawRect(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, float degree, float thickness)
     {
         glm::vec3 p1 = glm::vec3(position.x - (size.x / 2.0f), position.y - (size.y / 2.0f), position.z);
         glm::vec3 p2 = glm::vec3(position.x - (size.x / 2.0f), position.y + (size.y / 2.0f), position.z);
@@ -470,7 +470,7 @@ namespace Az
 
     void Renderer::DrawRect(Az::Rect& dst, const glm::vec4& color, float thickness)
     {
-        DrawRect(dst.Position, dst.Size, dst.rotation, color, thickness);
+        DrawRect(dst.Position, dst.Size, color, dst.rotation, thickness);
     }
 
     const Renderer::Stats& Renderer::GetStats()

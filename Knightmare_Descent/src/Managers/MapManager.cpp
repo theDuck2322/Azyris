@@ -76,6 +76,32 @@ std::vector<Az::Texture>& MapManager::GetTextures()
 	return m_Textures;
 }
 
+void MapManager::CreateColliders()
+{
+	
+		
+	m_Colliders.emplace_back(glm::vec3(-2296, 840, 0), glm::vec3(2128, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-3304, 392, 0), glm::vec3(112, 784, 1));
+	m_Colliders.emplace_back(glm::vec3(-2688, 56, 0), glm::vec3(1120, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-2184, -112, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(-2912, -168, 0), glm::vec3(1344, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-3528, -504, 0), glm::vec3(112, 560, 1));
+	m_Colliders.emplace_back(glm::vec3(-2912, -728, 0), glm::vec3(1120, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-2408, -952, 0), glm::vec3(112, 336, 1));
+	m_Colliders.emplace_back(glm::vec3(-2856, -1064, 0), glm::vec3(784, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-3192, -1512, 0), glm::vec3(112, 784, 1));
+	m_Colliders.emplace_back(glm::vec3(-2464, -1848, 0), glm::vec3(1344, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-1848, -1400, 0), glm::vec3(112, 784, 1));
+	m_Colliders.emplace_back(glm::vec3(-2016, -1064, 0), glm::vec3(224, 112, 1));
+
+	//m_Colliders.emplace_back(glm::vec3(-3192, -1512, 0), glm::vec3(112, 784, 1));
+	//m_Colliders.emplace_back(glm::vec3(-3192, -1512, 0), glm::vec3(112, 784, 1));
+	//m_Colliders.emplace_back(glm::vec3(-3192, -1512, 0), glm::vec3(112, 784, 1));
+	//m_Colliders.emplace_back(glm::vec3(-3192, -1512, 0), glm::vec3(112, 784, 1));
+
+
+}
+
 void MapManager::RenderMap()
 {
 	AZ_Assert(Az::Renderer::batchRunning() != false, "Function added incorectly");

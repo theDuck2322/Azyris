@@ -37,7 +37,7 @@ namespace Az
         
         static void DrawLine(const glm::vec3& start, const glm::vec3& end, const glm::vec4& color, float thickness = 2.5f);
 
-        static void DrawRect(const glm::vec3& position, const glm::vec3& size, float degree, const glm::vec4& color, float thickness = 2.5f);
+        static void DrawRect(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, float degree = 0, float thickness = 2.5f);
         static void DrawRect(Az::Rect& dst, const glm::vec4& color, float thickness = 2.5f);
 
 

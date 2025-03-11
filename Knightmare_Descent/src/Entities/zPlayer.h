@@ -20,6 +20,7 @@ public:
 	zPlayer() = default;
 
 	inline Az::Rect& GetDST() { return m_Dst; }
+	inline Az::Rect& GetHitboxClip() { return m_HitBoxclip; }
 	inline Az::Rect* GetSRC() { return &m_SRC; }
 
 	inline bool playerFlipped() { return m_IsFlippedX; }
@@ -51,6 +52,7 @@ private:
 	glm::vec3 m_Direction = GLM_VEC3_ZERO;
 	Az::Rect m_Dst;
 	Az::Rect m_SRC;
+	Az::Rect m_HitBoxclip; // for wall & map collisions
 
 	Az::Texture m_Texture;
 

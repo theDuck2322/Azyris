@@ -17,10 +17,14 @@ namespace Az
 	{
 	public:
 
+		B2_BoxCollider() = default;
+		B2_BoxCollider(Az::Rect& dst, B2_ColliderType type = B2_ColliderType::STATIC);
+		B2_BoxCollider(const glm::vec3& position, const glm::vec3& size, float degree = 0, B2_ColliderType type = B2_ColliderType::STATIC);
+
 		static void SetScene(b2World* scene);
 
 		void CreateCollider(Az::Rect& dst, B2_ColliderType type = B2_ColliderType::STATIC);
-		void CreateCollider(const glm::vec3& position, const glm::vec3& size, float degree, B2_ColliderType type = B2_ColliderType::STATIC);
+		void CreateCollider(const glm::vec3& position, const glm::vec3& size, float degree = 0, B2_ColliderType type = B2_ColliderType::STATIC);
 
 		// direction should be in range [-1, +1]
 		void SetVelocity(const glm::vec3& direction, float speed);
@@ -31,6 +35,8 @@ namespace Az
 
 		void SetAngle(float degree);
 		float GetAngle();
+
+		inline b2Body* GetBody() { return m_Body; }
 
 	private:
 

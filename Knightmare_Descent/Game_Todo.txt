@@ -1,0 +1,19 @@
+
+
+Knightmare_Descent Todo list:
+
+Done:
+	
+
+
+Need to be done:
+
+	add wall collision
+	add attaks
+	add enemies
+	add killing enemies
+	make enemies to deal damage to player
+	add ai and path finding to enemies (suggestion: split the map into a 2d grid)
+	add inventory system
+
+

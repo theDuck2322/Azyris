@@ -6,13 +6,19 @@ void zPlayer::Start()
 	m_Dst.Position = glm::vec3(0, 0, 0);
 	m_Dst.Size = glm::vec3(250, 250 * (29.0f / 48.0f), 0);
 	m_Dst.rotation = 0;
+
+	m_HitBoxclip.Position = glm::vec3(0, -40, 0);
+	m_HitBoxclip.Size = glm::vec3(80, 50, 1);
+	m_HitBoxclip.rotation = 0;
+
 	initAnimManager();
 	initAnimations();
 
 	//m_Collider.CreateCollider(m_Dst, Az::CP_ColliderType::DYNAMIC);
 	//cpBodySetAngle(m_Collider.GetBody(), 0.0f);
 
-	m_Collider.CreateCollider(m_Dst, Az::B2_ColliderType::DYNAMIC);
+	m_Collider.CreateCollider(m_HitBoxclip, Az::B2_ColliderType::DYNAMIC);
+	m_Collider.GetBody()->SetFixedRotation(true);
 }
 
 void zPlayer::Update()
@@ -117,7 +123,7 @@ void zPlayer::Move()
 
 	pos = m_Collider.GetPosition();
 	m_Dst.Position.x = pos.x;
-	m_Dst.Position.y = pos.y;
+	m_Dst.Position.y = pos.y+40;
 
 	//cpBodySetAngle(m_Collider.GetBody(), 0.0f);
 
