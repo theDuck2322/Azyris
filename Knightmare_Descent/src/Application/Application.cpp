@@ -105,27 +105,9 @@ void Application::Run()
 	m_World.LoadMap();
 	m_World.CreateColliders();
 
-	Az::Rect col;
-	col.Position = glm::vec3(16, 16, 0);
-	col.Size = glm::vec3(16 * 13, 16, 1);
-	
-	//Az::CP_BoxCollider2D wallCol;
-	//wallCol.CreateCollider(col);
-
 	m_Player.Start();
 	m_Player.SetTexture(texture);
 
-	Az::B2_BoxCollider ground;
-	Az::Rect groundDST;
-	groundDST.Position = glm::vec3(0, -100, 20);
-	groundDST.Size = glm::vec3(200, 50, 1);
-	ground.CreateCollider(groundDST);
-
-	Az::B2_BoxCollider box;
-	Az::Rect boxDST;
-	boxDST.Position = glm::vec3(0, 300, 20);
-	boxDST.Size = glm::vec3(100, 100, 1);
-	box.CreateCollider(boxDST, Az::B2_ColliderType::DYNAMIC);
 
 	while (!m_Window.ShouldClose())
 	{
@@ -149,11 +131,13 @@ void Application::Run()
 		Az::Renderer::ResetStats();
 		Az::Renderer::BeginBatch();
 
+		/*
+		for (auto& i : m_World.GetColliders())
+		{
+			Az::Renderer::DrawQuad(i.GetHitbox(), glm::vec4(0.62, 0.153, 0.333, 1));
+		}
+		*/
 
-		Az::Renderer::DrawQuad(groundDST, glm::vec4(1));
-		glm::vec2 p = box.GetPosition();
-		boxDST.Position = glm::vec3(p, boxDST.Position.z);
-		Az::Renderer::DrawQuad(boxDST, glm::vec4(0, 1, 0, 1));
 
 
 		Az::Renderer::DrawQuad(m_Player.GetDST(), m_Player.GetSRC(), m_Player.GetTexture(), m_Player.playerFlipped());

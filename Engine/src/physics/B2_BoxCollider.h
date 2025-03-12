@@ -32,6 +32,7 @@ namespace Az
 
 		glm::vec2 GetPosition();
 
+		inline Az::Rect& GetHitbox() { return m_DrawableHitbox; }
 
 		void SetAngle(float degree);
 		float GetAngle();
@@ -44,6 +45,7 @@ namespace Az
 
 	private:
 
+		Az::Rect m_DrawableHitbox;
 		b2BodyDef m_BodyDef;
 		b2Body* m_Body;
 		b2PolygonShape m_Shape;

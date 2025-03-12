@@ -3,11 +3,11 @@
 
 void zPlayer::Start()
 {
-	m_Dst.Position = glm::vec3(0, 0, 0);
+	m_Dst.Position = glm::vec3(-2520, -1512, 0);
 	m_Dst.Size = glm::vec3(250, 250 * (29.0f / 48.0f), 0);
 	m_Dst.rotation = 0;
 
-	m_HitBoxclip.Position = glm::vec3(0, -40, 0);
+	m_HitBoxclip.Position = glm::vec3(-2520, -1512, 0);
 	m_HitBoxclip.Size = glm::vec3(80, 50, 1);
 	m_HitBoxclip.rotation = 0;
 

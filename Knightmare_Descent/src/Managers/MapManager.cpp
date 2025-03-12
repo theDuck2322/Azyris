@@ -78,8 +78,6 @@ std::vector<Az::Texture>& MapManager::GetTextures()
 
 void MapManager::CreateColliders()
 {
-	
-		
 	m_Colliders.emplace_back(glm::vec3(-2296, 840, 0), glm::vec3(2128, 112, 1));
 	m_Colliders.emplace_back(glm::vec3(-3304, 392, 0), glm::vec3(112, 784, 1));
 	m_Colliders.emplace_back(glm::vec3(-2688, 56, 0), glm::vec3(1120, 112, 1));
@@ -93,13 +91,59 @@ void MapManager::CreateColliders()
 	m_Colliders.emplace_back(glm::vec3(-2464, -1848, 0), glm::vec3(1344, 112, 1));
 	m_Colliders.emplace_back(glm::vec3(-1848, -1400, 0), glm::vec3(112, 784, 1));
 	m_Colliders.emplace_back(glm::vec3(-2016, -1064, 0), glm::vec3(224, 112, 1));
-
-	//m_Colliders.emplace_back(glm::vec3(-3192, -1512, 0), glm::vec3(112, 784, 1));
-	//m_Colliders.emplace_back(glm::vec3(-3192, -1512, 0), glm::vec3(112, 784, 1));
-	//m_Colliders.emplace_back(glm::vec3(-3192, -1512, 0), glm::vec3(112, 784, 1));
-	//m_Colliders.emplace_back(glm::vec3(-3192, -1512, 0), glm::vec3(112, 784, 1));
-
-
+	m_Colliders.emplace_back(glm::vec3(-2072, -840, 0), glm::vec3(112, 336, 1));
+	m_Colliders.emplace_back(glm::vec3(-1736, -728, 0), glm::vec3(560, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-1512, -560, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(-1120, -504, 0), glm::vec3(672, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-840, -840, 0), glm::vec3(112, 560, 1));
+	m_Colliders.emplace_back(glm::vec3(-1120, -1064, 0), glm::vec3(448, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-1288, -1512, 0), glm::vec3(112, 784, 1));
+	m_Colliders.emplace_back(glm::vec3(-560, -1848, 0), glm::vec3(1344, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(56, -1680, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(336, -1624, 0), glm::vec3(448, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(504, -1456, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(896, -1400, 0), glm::vec3(672, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(1176, -1624, 0), glm::vec3(112, 336, 1));
+	m_Colliders.emplace_back(glm::vec3(2016, -1736, 0), glm::vec3(1568, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(2744, -392, 0), glm::vec3(112, 2576, 1));
+	m_Colliders.emplace_back(glm::vec3(1904, 840, 0), glm::vec3(1568, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(1176, 616, 0), glm::vec3(112, 336, 1));
+	m_Colliders.emplace_back(glm::vec3(952, 504, 0), glm::vec3(336, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(840, 728, 0), glm::vec3(112, 336, 1));
+	m_Colliders.emplace_back(glm::vec3(-56, 840, 0), glm::vec3(1680, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-840, 616, 0), glm::vec3(112, 336, 1));
+	m_Colliders.emplace_back(glm::vec3(-1288, 672, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(-1120, 504, 0), glm::vec3(448, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-1064, 280, 0), glm::vec3(560, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-1288, 112, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(-1624, 56, 0), glm::vec3(560, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-1848, -112, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(-1624, -168, 0), glm::vec3(336, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-840, -280, 0), glm::vec3(1456, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-168, -448, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(-392, -504, 0), glm::vec3(336, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-504, -840, 0), glm::vec3(112, 560, 1));
+	m_Colliders.emplace_back(glm::vec3(-168, -1064, 0), glm::vec3(560, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(112, -1232, 0), glm::vec3(224, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(168, -560, 0), glm::vec3(112, 1120, 1));
+	m_Colliders.emplace_back(glm::vec3(504, -616, 0), glm::vec3(112, 1232, 1));
+	m_Colliders.emplace_back(glm::vec3(896, -1176, 0), glm::vec3(672, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(1176, -392, 0), glm::vec3(112, 1456, 1));
+	m_Colliders.emplace_back(glm::vec3(952, 280, 0), glm::vec3(336, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(840, 56, 0), glm::vec3(112, 336, 1));
+	m_Colliders.emplace_back(glm::vec3(672, -56, 0), glm::vec3(224, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-392, -56, 0), glm::vec3(1008, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-840, 112, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(-2968, 392, 0), glm::vec3(112, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(-1848, 392, 0), glm::vec3(112, 112, 1));
+	m_Colliders.emplace_back(glm::vec3(1624, 336, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(2296, 336, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(1624, -224, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(2296, -224, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(1624, -784, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(2296, -784, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(1624, -1344, 0), glm::vec3(112, 224, 1));
+	m_Colliders.emplace_back(glm::vec3(2296, -1344, 0), glm::vec3(112, 224, 1));
 }
 
 void MapManager::RenderMap()

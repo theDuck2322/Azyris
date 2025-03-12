@@ -25,11 +25,16 @@ namespace Az
 	{
 		AZ_Assert(m_World != nullptr, "Scene reference is nullptr");
 		CreateCollider(dst.Position, dst.Size, dst.rotation, type);
+		
 	}
 
 	void B2_BoxCollider::CreateCollider(const glm::vec3& position, const glm::vec3& size, float degree, B2_ColliderType type)
 	{
 		AZ_Assert(m_World != nullptr, "Scene reference is nullptr");
+
+		m_DrawableHitbox.Position = position;
+		m_DrawableHitbox.Size = size;
+		m_DrawableHitbox.rotation = degree;
 
 		if (type == B2_ColliderType::STATIC)
 		{
