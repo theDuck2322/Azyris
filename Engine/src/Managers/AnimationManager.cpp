@@ -109,6 +109,8 @@ namespace Az
 	void AnimationManager::ResetFrameTime()
 	{
 		m_CurrentTime = 0;
+		m_CurrentFrameX = 0;
+		m_CurrentFrameY = 0;
 	}
 
 }

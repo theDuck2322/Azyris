@@ -89,9 +89,7 @@ void zPlayer::handleAnimation()
 	{
 		m_AnimType = PlayerAnimationType::DEATH;
 		m_AnimManager.BindInfo(m_Death);
-		//m_AnimManager.RunAnimationLinear();
 
-		//m_AnimManager.RunAnimationLinear(m_Death);
 	}
 	else if (m_IsAttacking)
 	{
@@ -110,16 +108,11 @@ void zPlayer::handleAnimation()
 	}
 	else if (m_IsMoving)
 	{
-		//m_AnimManager.RunAnimationLinear(m_Walk);
 		m_AnimManager.BindInfo(m_Walk);
-		//m_AnimManager.RunAnimationLinear();
-
 	}
 	else
 	{
-		//m_AnimManager.RunAnimationLinear(m_Idle);
 		m_AnimManager.BindInfo(m_Idle);
-		//m_AnimManager.RunAnimationLinear();
 
 	}
 
