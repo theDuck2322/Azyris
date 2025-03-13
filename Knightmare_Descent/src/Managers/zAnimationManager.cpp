@@ -1,12 +1,12 @@
-#include "AnimationManager.h"
+#include "zAnimationManager.h"
 
 
-AnimationManager::AnimationManager(AnimationManagerDef& animDef)
+zAnimationManager::zAnimationManager(AnimationManagerDef& animDef)
 {
 	init(animDef);
 }
 
-void AnimationManager::init(AnimationManagerDef& animDef)
+void zAnimationManager::init(AnimationManagerDef& animDef)
 {
 	// Const variable initialization;
 	m_SpriteStartX = animDef.SpriteStartX;
@@ -39,12 +39,12 @@ void AnimationManager::init(AnimationManagerDef& animDef)
 	m_AnimDefIsInit = true;
 }
 
-Az::Rect AnimationManager::getFrameSRC()
+Az::Rect zAnimationManager::getFrameSRC()
 {
 	return m_CurrentSRC;
 }
 
-void AnimationManager::Update()
+void zAnimationManager::Update()
 {
 
 	if (m_CurrentTime < m_FrameDuration)
@@ -70,7 +70,7 @@ void AnimationManager::Update()
 	}
 }
 
-void AnimationManager::RunAnimation(AnimationInfo& info)
+bool zAnimationManager::RunAnimation(AnimationInfo& info)
 {
 	AZ_Assert(m_AnimDefIsInit != false, "AnimationManager is NOT initialized");
 
@@ -80,6 +80,7 @@ void AnimationManager::RunAnimation(AnimationInfo& info)
 	int srcX = 0;
 	int srcY = 0;
 
+	bool animationIsFinished = false;
 
 	if (m_CurrentTime < info.FrameDuration)
 	{
@@ -94,6 +95,7 @@ void AnimationManager::RunAnimation(AnimationInfo& info)
 			m_CurrentFrameY++;
 			if (m_CurrentFrameY >= endFrameY)
 			{
+				animationIsFinished = true;
 				m_CurrentFrameY = 0;
 			}
 		}
@@ -108,5 +110,6 @@ void AnimationManager::RunAnimation(AnimationInfo& info)
 		m_CurrentTime = 0;
 
 	}
+	return animationIsFinished;
 
 }

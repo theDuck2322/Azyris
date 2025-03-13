@@ -1467,6 +1467,9 @@
     <ClInclude Include="src\physics\B2_BoxCollider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Managers\AnimationManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="vendors\glad\src\glad.c">
@@ -1755,6 +1758,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\physics\B2_BoxCollider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Managers\AnimationManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

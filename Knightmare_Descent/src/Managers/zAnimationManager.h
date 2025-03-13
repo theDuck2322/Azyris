@@ -31,17 +31,17 @@ struct AnimationInfo
 
 };
 
-class AnimationManager
+class zAnimationManager
 {
 public:
-	AnimationManager() = default;
-	AnimationManager(AnimationManagerDef& animDef);
+	zAnimationManager() = default;
+	zAnimationManager(AnimationManagerDef& animDef);
 	void init(AnimationManagerDef& animDef);
 
 	Az::Rect getFrameSRC();
 
 	void Update();
-	void RunAnimation(AnimationInfo& info);
+	bool RunAnimation(AnimationInfo& info);
 
 private:
 

@@ -4,11 +4,11 @@ Knightmare_Descent Todo list:
 
 Done:
 	
+	add wall collision
 
 
 Need to be done:
 
-	add wall collision
 	add attaks
 	add enemies
 	add killing enemies

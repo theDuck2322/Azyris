@@ -66,17 +66,6 @@ void Application::ProcessEvents()
 }
 
 
-const float PPM = 64.0f;
-
-
-float PixelsToMeters(float pixels) {
-	return pixels / PPM;
-}
-
-float MetersToPixels(float meters) {
-	return meters * PPM;
-}
-
 void Application::Run()
 {
 	Az::SetWorkingDir();
@@ -130,6 +119,8 @@ void Application::Run()
 
 		Az::Renderer::ResetStats();
 		Az::Renderer::BeginBatch();
+
+
 
 		/*
 		for (auto& i : m_World.GetColliders())

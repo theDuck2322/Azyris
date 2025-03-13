@@ -24,7 +24,7 @@
     <ClCompile Include="src\Entities\zPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Managers\AnimationManager.cpp">
+    <ClCompile Include="src\Managers\zAnimationManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Managers\MapManager.cpp">
@@ -38,7 +38,7 @@
     <ClInclude Include="src\Entities\zPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Managers\AnimationManager.h">
+    <ClInclude Include="src\Managers\zAnimationManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Managers\MapManager.h">

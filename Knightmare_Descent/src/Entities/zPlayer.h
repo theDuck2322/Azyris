@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Azyris.h>
+#include <Managers/zAnimationManager.h>
 #include <Managers/AnimationManager.h>
 
 enum class PlayerAnimationType
@@ -34,8 +35,9 @@ public:
 	inline Az::Texture& GetTexture() { return m_Texture; }
 public:
 
-	float health = 100;
+	float Health = 100;
 	float Speed = 500;
+	
 
 private:
 
@@ -43,7 +45,13 @@ private:
 	void initAnimations();
 	void getDirection();
 	void Move();
+
 	void handleAnimation();
+	void RunAnimations();
+	void Attack();
+
+
+private:
 
 
 	//Az::CP_BoxCollider2D m_Collider;
@@ -61,17 +69,20 @@ private:
 private:
 
 
-	AnimationManager m_AnimManager;
+	Az::AnimationManager m_AnimManager;
 
 	PlayerAnimationType m_AnimType;
 
-	AnimationInfo m_Idle;
-	AnimationInfo m_Walk;
-	AnimationInfo m_Attack01;
-	AnimationInfo m_Attack02;
-	AnimationInfo m_Attack03;
-	AnimationInfo m_Hurt;
-	AnimationInfo m_Death;
+	Az::AnimationInfo m_Idle;
+	Az::AnimationInfo m_Walk;
+	Az::AnimationInfo m_Attack01;
+	Az::AnimationInfo m_Attack02;
+	Az::AnimationInfo m_Attack03;
+	Az::AnimationInfo m_Hurt;
+	Az::AnimationInfo m_Death;
 
-
+	bool m_IsAttacking = false;
+	bool m_IsMoving = false;
+	float m_CurrentFrameAttk = 0;;
+	float m_AttackTimer = 1.2f;
 };

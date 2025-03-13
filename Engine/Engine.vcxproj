@@ -105,7 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -122,7 +122,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -141,6 +141,7 @@
     <ClInclude Include="src\buffers\VBO.h" />
     <ClInclude Include="src\core\Input.h" />
     <ClInclude Include="src\core\Window.h" />
+    <ClInclude Include="src\Managers\AnimationManager.h" />
     <ClInclude Include="src\physics\B2_BoxCollider.h" />
     <ClInclude Include="src\physics\B2_Scene.h" />
     <ClInclude Include="src\physics\CP_Scene.h" />
@@ -625,6 +626,7 @@
     <ClCompile Include="src\buffers\VBO.cpp" />
     <ClCompile Include="src\core\Input.cpp" />
     <ClCompile Include="src\core\Window.cpp" />
+    <ClCompile Include="src\Managers\AnimationManager.cpp" />
     <ClCompile Include="src\physics\B2_BoxCollider.cpp" />
     <ClCompile Include="src\physics\B2_Scene.cpp" />
     <ClCompile Include="src\physics\CP_BoxCollider.cpp" />
