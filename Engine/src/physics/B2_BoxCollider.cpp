@@ -129,4 +129,25 @@ namespace Az
 		return toDegrees(m_Body->GetAngle());
 	}
 
+	void B2_BoxCollider::Destroy()
+	{
+		m_Body->GetWorld()->DestroyBody(m_Body);
+		m_Body = nullptr;
+	}
+
+	void B2_BoxCollider::DestroyFixture()
+	{
+		if (m_Body)
+		{
+			b2Fixture* fixture = m_Body->GetFixtureList();
+			while (fixture)
+			{
+				b2Fixture* next = fixture->GetNext();
+				m_Body->DestroyFixture(fixture);
+				fixture = next;
+			}
+		}
+
+	}
+
 }

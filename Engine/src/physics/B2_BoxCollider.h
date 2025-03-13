@@ -39,6 +39,9 @@ namespace Az
 
 		inline b2Body* GetBody() { return m_Body; }
 
+		void Destroy();
+		void DestroyFixture();
+
 	private:
 
 		static b2World* m_World;

@@ -113,7 +113,6 @@ void zPlayer::handleAnimation()
 	else
 	{
 		m_AnimManager.BindInfo(m_Idle);
-
 	}
 
 	m_AnimManager.RunAnimationLinear();
