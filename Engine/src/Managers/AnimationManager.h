@@ -19,13 +19,13 @@ namespace Az
 
 	struct AnimationInfo
 	{
-		uint32_t startFrameX;
-		uint32_t startFrameY;
+		uint32_t startFrameX = 0;
+		uint32_t startFrameY = 0;
 
-		uint32_t endFrameX;
-		uint32_t endFrameY;
+		uint32_t endFrameX = 0;
+		uint32_t endFrameY = 0;
 
-		float frameDuration;
+		float frameDuration = 0;
 	};
 
 	class AnimationManager
@@ -36,8 +36,14 @@ namespace Az
 		AnimationManager(AnimationManagerDef& def);
 		void Init(AnimationManagerDef def);
 
+
+		void BindInfo(AnimationInfo& info);
+
 		// if the atlas has 2D lists of sprites, it wont work
 		bool RunAnimationLinear(AnimationInfo& info);
+		bool RunAnimationLinear();
+
+		inline bool AnimationIsFinished() { return m_AnimationIsFinished; }
 
 		// doesnt work yet;
 		bool RunAnimation();
@@ -47,6 +53,10 @@ namespace Az
 		inline Az::Rect GetFrameSRC() { return m_Src; }
 
 	private:
+
+		AnimationInfo m_BindedInfo;
+
+		bool m_InfoIsChanged = false;
 
 		bool m_ManagerIsInitialized = false;
 		bool m_AnimationIsFinished = false;

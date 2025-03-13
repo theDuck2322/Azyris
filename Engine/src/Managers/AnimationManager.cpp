@@ -21,15 +21,30 @@ namespace Az
 		m_ManagerIsInitialized = true;
 	}
 
+	void AnimationManager::BindInfo(AnimationInfo& info)
+	{
+		// checks if they are the same
+		if (!(m_BindedInfo.startFrameX == info.startFrameX &&
+			m_BindedInfo.startFrameY == info.startFrameY &&
+			m_BindedInfo.endFrameX == info.endFrameX &&
+			m_BindedInfo.endFrameY == info.endFrameY))
+		{
+			m_InfoIsChanged = true;
+		}
+		else
+		{
+			m_InfoIsChanged = false;
+		}
+		m_BindedInfo = info;
+
+	}
+
 	bool AnimationManager::RunAnimationLinear(AnimationInfo& info)
 	{
 		AZ_Assert(m_ManagerIsInitialized == true, "Animation Manager is not initialized!!");
-
 		uint32_t endFrameX = info.endFrameX / m_SpriteSizeX;
 
 		m_AnimationIsFinished = false;
-
-
 		m_CurrentTime += Az::Timer::deltaTime;
 		
 		if(m_CurrentTime > info.frameDuration)
@@ -45,6 +60,40 @@ namespace Az
 			}
 			m_Src.Position.x = info.startFrameX + (m_CurrentFrameX * (0 + m_SpriteSizeX));
 			m_Src.Position.y = info.startFrameY;
+
+		}
+
+		return m_AnimationIsFinished;
+	}
+
+	bool AnimationManager::RunAnimationLinear()
+	{
+		AZ_Assert(m_ManagerIsInitialized == true, "Animation Manager is not initialized!!");
+		
+		if (m_InfoIsChanged)
+		{
+			ResetFrameTime();
+			m_InfoIsChanged = false;
+		}
+		
+		uint32_t endFrameX = m_BindedInfo.endFrameX / m_SpriteSizeX;
+
+		m_AnimationIsFinished = false;
+		m_CurrentTime += Az::Timer::deltaTime;
+
+		if (m_CurrentTime > m_BindedInfo.frameDuration)
+		{
+			m_CurrentTime = 0;
+			m_CurrentFrameX++;
+			if (m_CurrentFrameX >= endFrameX)
+			{
+				m_CurrentFrameX = 0;
+
+				m_AnimationIsFinished = true;
+
+			}
+			m_Src.Position.x = m_BindedInfo.startFrameX + (m_CurrentFrameX * (0 + m_SpriteSizeX));
+			m_Src.Position.y = m_BindedInfo.startFrameY;
 
 		}
 

@@ -88,10 +88,14 @@ void zPlayer::handleAnimation()
 	if (Health <= 0)
 	{
 		m_AnimType = PlayerAnimationType::DEATH;
-		m_AnimManager.RunAnimationLinear(m_Death);
+		m_AnimManager.BindInfo(m_Death);
+		//m_AnimManager.RunAnimationLinear();
+
+		//m_AnimManager.RunAnimationLinear(m_Death);
 	}
 	else if (m_IsAttacking)
 	{
+
 		m_CurrentFrameAttk += Az::Timer::deltaTime;
 		if (m_CurrentFrameAttk >= m_AttackTimer)
 		{
@@ -100,18 +104,26 @@ void zPlayer::handleAnimation()
 		}
 		else
 		{
-			m_AnimManager.RunAnimationLinear(m_Attack01);
+			m_AnimManager.BindInfo(m_Attack01);
 		}
 		
 	}
 	else if (m_IsMoving)
 	{
-		m_AnimManager.RunAnimationLinear(m_Walk);
+		//m_AnimManager.RunAnimationLinear(m_Walk);
+		m_AnimManager.BindInfo(m_Walk);
+		//m_AnimManager.RunAnimationLinear();
+
 	}
 	else
 	{
-		m_AnimManager.RunAnimationLinear(m_Idle);
+		//m_AnimManager.RunAnimationLinear(m_Idle);
+		m_AnimManager.BindInfo(m_Idle);
+		//m_AnimManager.RunAnimationLinear();
+
 	}
+
+	m_AnimManager.RunAnimationLinear();
 
 	m_SRC = m_AnimManager.GetFrameSRC();
 
@@ -124,7 +136,10 @@ void zPlayer::Attack()
 		m_IsAttacking = true;
 		m_AnimType = PlayerAnimationType::ATTACK01;
 		m_CurrentFrameAttk = 0;
-		m_AnimManager.ResetFrameTime();
+		if (m_AnimManager.AnimationIsFinished())
+		{
+			m_AnimManager.ResetFrameTime();  // Reset only if the animation finished
+		}
 
 	}
 
