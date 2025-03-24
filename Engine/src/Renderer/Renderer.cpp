@@ -109,6 +109,8 @@ namespace Az
 
     void Renderer::BeginBatch()
     {
+        ResetStats();
+
         s_RenderData.QuadBufferPtr = s_RenderData.QuadBuffer;
         s_RenderData.IndexCount = 0;
         s_RenderData.TextureSlotIndex = 1;
@@ -121,6 +123,8 @@ namespace Az
         GLsizeiptr size = (uint8_t*)s_RenderData.QuadBufferPtr - (uint8_t*)s_RenderData.QuadBuffer;
         glBindBuffer(GL_ARRAY_BUFFER, s_RenderData.QuadVB);
         glBufferSubData(GL_ARRAY_BUFFER, 0, size, s_RenderData.QuadBuffer);
+
+        Flush();
     }
 
     void Renderer::Flush()
@@ -149,6 +153,7 @@ namespace Az
 
     void Renderer::DrawQuad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, float degree)
     {
+        AZ_Assert(m_IsBatchRunning == true, "Batcher is not running!!");
         if (s_RenderData.IndexCount >= MaxIndexCount)
         {
             EndBatch();
@@ -201,6 +206,8 @@ namespace Az
 
     void Renderer::DrawQuad(const glm::vec3& position, const glm::vec3& size, uint32_t textureID, float degree)
     {
+        AZ_Assert(m_IsBatchRunning == true, "Batcher is not running!!");
+
         if (s_RenderData.IndexCount >= MaxIndexCount || s_RenderData.TextureSlotIndex >= MaxTextures)
         {
             EndBatch();
@@ -270,6 +277,8 @@ namespace Az
 
     void Renderer::DrawQuad(Az::Rect& dst, Az::Rect* src, Az::Texture texture, bool flipX)
     {
+        AZ_Assert(m_IsBatchRunning == true, "Batcher is not running!!");
+
         if (s_RenderData.IndexCount >= MaxIndexCount || s_RenderData.TextureSlotIndex >= MaxTextures)
         {
             EndBatch();
@@ -383,6 +392,8 @@ namespace Az
 
     void Renderer::DrawQuad(Az::Rect& dst, const glm::vec4& color)
     {
+        AZ_Assert(m_IsBatchRunning == true, "Batcher is not running!!");
+
         if (s_RenderData.IndexCount >= MaxIndexCount || s_RenderData.TextureSlotIndex >= MaxTextures)
         {
             EndBatch();
@@ -436,6 +447,8 @@ namespace Az
 
     void Renderer::DrawLine(const glm::vec3& start, const glm::vec3& end, const glm::vec4& color, float thickness)
     {
+        AZ_Assert(m_IsBatchRunning == true, "Batcher is not running!!");
+
         float angle = Az::toDegrees(atan2(start.y - end.y, start.x - end.x));
         
         float length = Az::DistanceBetweenPoints(start, end);
@@ -452,6 +465,8 @@ namespace Az
 
     void Renderer::DrawRect(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, float degree, float thickness)
     {
+        AZ_Assert(m_IsBatchRunning == true, "Batcher is not running!!");
+
         glm::vec3 p1 = glm::vec3(position.x - (size.x / 2.0f), position.y - (size.y / 2.0f), position.z);
         glm::vec3 p2 = glm::vec3(position.x - (size.x / 2.0f), position.y + (size.y / 2.0f), position.z);
         glm::vec3 p3 = glm::vec3(position.x + (size.x / 2.0f), position.y + (size.y / 2.0f), position.z);
@@ -470,7 +485,29 @@ namespace Az
 
     void Renderer::DrawRect(Az::Rect& dst, const glm::vec4& color, float thickness)
     {
+        AZ_Assert(m_IsBatchRunning == true, "Batcher is not running!!");
+
         DrawRect(dst.Position, dst.Size, color, dst.rotation, thickness);
+    }
+
+    void Renderer::RenderText(const std::string& text, glm::vec3 position, ImFont* font, const glm::vec4& color)
+    {
+        AZ_Assert(m_IsBatchRunning != true, "Batcher is running!!");
+        AZ_Assert(Az::ImGuiLayer::IsReady() != false, "ImGUI is not initialized!!");
+        AZ_Assert(font != nullptr, "Font is nullptr!!");
+
+        uint8_t r = 255 / color.r;
+        uint8_t g = 255 / color.g;
+        uint8_t b = 255 / color.b;
+        uint8_t a = 255 / color.a;
+
+        ImGui::GetForegroundDrawList()->AddText(
+            font, 
+            font->FontSize, 
+            ImVec2(position.x, position.y), 
+            IM_COL32(r, g, b, a), 
+            text.c_str());
+
     }
 
     const Renderer::Stats& Renderer::GetStats()

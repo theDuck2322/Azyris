@@ -18,7 +18,6 @@ private: // CORE
 	Az::Shader m_Shader;
 
 private: // Game stuff
-	Az::CP_Scene m_CPScene;
 	Az::B2_Scene m_B2Scene;
 
 	MapManager m_World;

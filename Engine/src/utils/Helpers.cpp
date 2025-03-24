@@ -57,6 +57,13 @@ namespace Az
         return meters * PIXEL_PER_METER;
     }
 
+    // w = collumns, h = rows or something like this
+    void GetTilePosition(int k, int w, int h, int& tileX, int& tileY)
+    {
+        tileX = k % w;
+        tileY = k / h;
+    }
+
 
     float toDegrees(float radian)
     {

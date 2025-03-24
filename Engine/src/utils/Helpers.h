@@ -7,6 +7,7 @@
 #include <glm/gtx/transform.hpp> // For glm::rotate
 #include <glm/gtc/constants.hpp> // For glm::radians
 
+// if condition is false then it asserts
 #define AZ_Assert(cond, msg) \
     do { \
         if (!(cond)) { \
@@ -17,8 +18,9 @@
         } \
     } while (false)
 
-const float PIXEL_PER_METER = 100.0f;
-
+inline const float PIXEL_PER_METER = 100.0f;
+inline const uint32_t CHARS_PER_COLLUMNS = 10; // for font atlas
+inline const uint32_t CHARS_PER_ROWS= 10; // for font atlas
 
 namespace Az
 {
@@ -55,6 +57,8 @@ namespace Az
     float PixelsToMeters(float pixels);
 
     float MetersToPixels(float meters);
+
+    void GetTilePosition(int k, int w, int h, int& tileX, int& tileY);
 
 };
 

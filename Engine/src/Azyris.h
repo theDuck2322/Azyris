@@ -5,6 +5,11 @@
 #include <Chipmunk2D/chipmunk/chipmunk.h>
 #include <Box2D/box2d/box2d.h>
 
+#include <ImGui/imgui.h>
+#include <ImGui/imgui_impl_sdl2.h>
+#include <imgui_impl_opengl3.h>
+
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
@@ -54,10 +59,12 @@
 #include <Renderer/Shader.h>
 #include <Renderer/Texture.h>
 
+#include <UI/ImGuiLayer.h>
 
 #include <utils/Timer.h>
 #include <utils/Helpers.h>
 #include <utils/Types.h>
+#include <utils/Profiler.h>
 
 inline float SCREEN_WIDTH = 1280;
 inline float SCREEN_HEIGHT = 720;

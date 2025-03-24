@@ -1,6 +1,5 @@
 #include "zPlayer.h"
 
-
 void zPlayer::Start()
 {
 	m_Dst.Position = glm::vec3(-2520, -1512, 0);
@@ -11,8 +10,8 @@ void zPlayer::Start()
 	m_HitBoxclip.Size = glm::vec3(80, 40, 1);
 	m_HitBoxclip.rotation = 0;
 
-	initAnimManager();
-	initAnimations();
+	InitAnimManager();
+	InitAnimations();
 
 	m_Collider.CreateCollider(m_HitBoxclip, Az::B2_ColliderType::DYNAMIC);
 	m_Collider.GetBody()->SetFixedRotation(true);
@@ -20,14 +19,28 @@ void zPlayer::Start()
 
 void zPlayer::Update()
 {
-	getDirection();
+	HandleInput();
 	Move();
 	Attack();
-	handleAnimation();
-	//RunAnimations();
+	HandleAnimation();
 }
 
-void zPlayer::getDirection()
+void zPlayer::Render()
+{
+	Az::Renderer::DrawQuad(m_Dst, &m_SRC, m_Texture, m_IsFlippedX);
+}
+
+void zPlayer::RenderUI()
+{
+	AZ_Assert(Az::Renderer::batchRunning() != true, "Batcher is running!!");
+	AZ_Assert(Az::ImGuiLayer::ReadyToDraw() != false, "ImGUI is not initialized!!");
+
+	if (m_IsInventory)
+		m_Inventory.Render();
+
+}
+
+void zPlayer::GetDirection()
 {
 	m_Direction = glm::vec3(0);
 	m_IsMoving = false;
@@ -76,7 +89,7 @@ void zPlayer::Move()
 		m_IsFlippedX = true;
 }
 
-void zPlayer::handleAnimation()
+void zPlayer::HandleAnimation()
 {
 	// Priority Order:
 	// 1. Death
@@ -121,6 +134,15 @@ void zPlayer::handleAnimation()
 
 }
 
+void zPlayer::HandleInput()
+{
+	GetDirection();
+	if (Az::Input::GetKeyDown(AZ_i))
+	{
+		m_IsInventory = !m_IsInventory;
+	}
+}
+
 void zPlayer::Attack()
 {
 	if (Az::Input::GetMouseButtonDown(1) && !m_IsAttacking)
@@ -137,63 +159,9 @@ void zPlayer::Attack()
 
 }
 
-void zPlayer::RunAnimations()
+
+void zPlayer::InitAnimManager()
 {
-	// Run the selected animation
-	switch (m_AnimType)
-	{
-	case PlayerAnimationType::IDLE:
-		m_AnimManager.RunAnimationLinear(m_Idle);
-		break;
-	case PlayerAnimationType::WALK:
-		m_AnimManager.RunAnimationLinear(m_Walk);
-		break;
-	case PlayerAnimationType::ATTACK01:
-		m_AnimManager.RunAnimationLinear(m_Attack01);
-		break;
-	case PlayerAnimationType::ATTACK02:
-		m_AnimManager.RunAnimationLinear(m_Attack02);
-		break;
-	case PlayerAnimationType::ATTACK03:
-		m_AnimManager.RunAnimationLinear(m_Attack03);
-		break;
-	case PlayerAnimationType::HURT:
-		m_AnimManager.RunAnimationLinear(m_Hurt);
-		break;
-	case PlayerAnimationType::DEATH:
-		m_AnimManager.RunAnimationLinear(m_Death);
-		break;
-	default:
-		m_AnimManager.RunAnimationLinear(m_Idle);
-		break;
-	}
-
-	m_SRC = m_AnimManager.GetFrameSRC();
-}
-
-void zPlayer::initAnimManager()
-{
-	/*
-	AnimationManagerDef def{};
-
-	def.SpriteStartX = 0 * 48; // 40
-	def.SpriteStartY = 0; // 38
-
-	def.SpriteSizeX = 48; // 17
-	def.SpriteSizeY = 29; // 20
-
-	def.SpriteOffsetX = 0; // 84
-	def.SpriteOffsetY = 0;
-
-	def.FrameDuration = 0.2;
-
-	def.SpritesPerLine = 6;
-	def.Columns = 1;
-
-	m_AnimManager = zAnimationManager(def);
-	*/
-
-
 	Az::AnimationManagerDef def{};
 	def.spriteSizeX = 48;
 	def.spriteSizeY = 29;
@@ -203,7 +171,7 @@ void zPlayer::initAnimManager()
 	m_AnimManager.Init(def);
 }
 
-void zPlayer::initAnimations()
+void zPlayer::InitAnimations()
 {
 	m_Idle.startFrameX = 0;
 	m_Idle.startFrameY = 0;

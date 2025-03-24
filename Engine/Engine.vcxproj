@@ -105,7 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/UI;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -122,7 +122,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/UI;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -150,7 +150,9 @@
     <ClInclude Include="src\Renderer\Camera2D.h" />
     <ClInclude Include="src\Renderer\Shader.h" />
     <ClInclude Include="src\Renderer\Texture.h" />
+    <ClInclude Include="src\UI\ImGuiLayer.h" />
     <ClInclude Include="src\utils\Helpers.h" />
+    <ClInclude Include="src\utils\Profiler.h" />
     <ClInclude Include="src\utils\Timer.h" />
     <ClInclude Include="src\utils\Types.h" />
     <ClInclude Include="vendors\Box2D\box2d\b2_api.h" />
@@ -523,6 +525,15 @@
     <ClInclude Include="vendors\glm\vec3.hpp" />
     <ClInclude Include="vendors\glm\vec4.hpp" />
     <ClInclude Include="vendors\glm\vector_relational.hpp" />
+    <ClInclude Include="vendors\ImGui\imconfig.h" />
+    <ClInclude Include="vendors\ImGui\imgui.h" />
+    <ClInclude Include="vendors\ImGui\imgui_impl_opengl3.h" />
+    <ClInclude Include="vendors\ImGui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="vendors\ImGui\imgui_impl_sdl2.h" />
+    <ClInclude Include="vendors\ImGui\imgui_internal.h" />
+    <ClInclude Include="vendors\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="vendors\ImGui\imstb_textedit.h" />
+    <ClInclude Include="vendors\ImGui\imstb_truetype.h" />
     <ClInclude Include="vendors\SDL2\begin_code.h" />
     <ClInclude Include="vendors\SDL2\close_code.h" />
     <ClInclude Include="vendors\SDL2\SDL.h" />
@@ -635,7 +646,9 @@
     <ClCompile Include="src\Renderer\Camera2D.cpp" />
     <ClCompile Include="src\Renderer\Shader.cpp" />
     <ClCompile Include="src\Renderer\Texture.cpp" />
+    <ClCompile Include="src\UI\ImGuiLayer.cpp" />
     <ClCompile Include="src\utils\Helpers.cpp" />
+    <ClCompile Include="src\utils\Profiler.cpp" />
     <ClCompile Include="src\utils\Timer.cpp" />
     <ClCompile Include="vendors\Box2D\src\collision\b2_broad_phase.cpp" />
     <ClCompile Include="vendors\Box2D\src\collision\b2_chain_shape.cpp" />
@@ -717,6 +730,13 @@
     <ClCompile Include="vendors\glad\src\glad.c" />
     <ClCompile Include="vendors\glm\detail\glm.cpp" />
     <ClCompile Include="vendors\glm\glm.cppm" />
+    <ClCompile Include="vendors\ImGui\imgui.cpp" />
+    <ClCompile Include="vendors\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="vendors\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="vendors\ImGui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="vendors\ImGui\imgui_impl_sdl2.cpp" />
+    <ClCompile Include="vendors\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="vendors\ImGui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\shaders\batchShader.frag" />

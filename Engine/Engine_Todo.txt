@@ -15,6 +15,16 @@ Done:
 
 Need to be done:
 	
+	// finish tonight
+	// finish the text padding
+	make a text renderer that uses a png atlas
+	make a profiling class
+	
+	// finish till friday
+	Add a text renderer that uses .ttf
+	batch the text renderer
+
+
 	make a particle system
 	add different shapes to the batch renderer
 	add different shapes to the physics engine

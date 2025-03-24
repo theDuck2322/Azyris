@@ -105,7 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/ImGUI;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Knightmare_Descent;$(SolutionDir)/Knightmare_Descent/src;$(SolutionDir)/Knightmare_Descent/src/Application;$(SolutionDir)/Knightmare_Descent/src/Entities;$(SolutionDir)/Knightmare_Descent/src/Managers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/UI;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/ImGUI;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Knightmare_Descent;$(SolutionDir)/Knightmare_Descent/src;$(SolutionDir)/Knightmare_Descent/src/Application;$(SolutionDir)/Knightmare_Descent/src/Entities;$(SolutionDir)/Knightmare_Descent/src/Managers;$(SolutionDir)/Knightmare_Descent/src/UI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -124,7 +124,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/ImGUI;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Knightmare_Descent;$(SolutionDir)/Knightmare_Descent/src;$(SolutionDir)/Knightmare_Descent/src/Application;$(SolutionDir)/Knightmare_Descent/src/Entities;$(SolutionDir)/Knightmare_Descent/src/Managers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Engine;$(SolutionDir)/Engine/src;$(SolutionDir)/Engine/src/buffers;$(SolutionDir)/Engine/src/core;$(SolutionDir)/Engine/src/Managers;$(SolutionDir)/Engine/src/meshes;$(SolutionDir)/Engine/src/physics;$(SolutionDir)/Engine/src/Renderer;$(SolutionDir)/Engine/src/UI;$(SolutionDir)/Engine/src/utils;$(SolutionDir)/Engine/vendors;$(SolutionDir)/Engine/vendors/Box2D;$(SolutionDir)/Engine/vendors/Box2D/box2d;$(SolutionDir)/Engine/vendors/glad;$(SolutionDir)/Engine/vendors/glad/include;$(SolutionDir)/Engine/vendors/glad/include/glad;$(SolutionDir)/Engine/vendors/glm;$(SolutionDir)/Engine/vendors/ImGUI;$(SolutionDir)/Engine/vendors/SDL2;$(SolutionDir)/Engine/vendors/Chipmunk2D;$(SolutionDir)/Engine/vendors/Chipmunk2D/chipmunk;$(SolutionDir)/Knightmare_Descent;$(SolutionDir)/Knightmare_Descent/src;$(SolutionDir)/Knightmare_Descent/src/Application;$(SolutionDir)/Knightmare_Descent/src/Entities;$(SolutionDir)/Knightmare_Descent/src/Managers;$(SolutionDir)/Knightmare_Descent/src/UI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -142,6 +142,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Managers\zAnimationManager.cpp" />
     <ClCompile Include="src\Managers\MapManager.cpp" />
+    <ClCompile Include="src\UI\Inventory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -153,6 +154,7 @@
     <ClInclude Include="src\Entities\zPlayer.h" />
     <ClInclude Include="src\Managers\zAnimationManager.h" />
     <ClInclude Include="src\Managers\MapManager.h" />
+    <ClInclude Include="src\UI\Inventory.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Game_Todo.txt" />

@@ -3,6 +3,7 @@
 #include <Azyris.h>
 #include <Managers/zAnimationManager.h>
 #include <Managers/AnimationManager.h>
+#include <UI/Inventory.h>
 
 enum class PlayerAnimationType
 {
@@ -28,6 +29,8 @@ public:
 
 	void Start();
 	void Update();
+	void Render();
+	void RenderUI();
 
 	inline void SetTexture(Az::Texture texture) { m_Texture = texture; }
 	inline void SetTexture(const char* texturePath) { m_Texture.loadFromFile(texturePath); }
@@ -38,23 +41,23 @@ public:
 	float Health = 100;
 	float Speed = 500;
 	
+	Inventory m_Inventory;
+
 
 private:
 
-	void initAnimManager();
-	void initAnimations();
-	void getDirection();
+	void InitAnimManager();
+	void InitAnimations();
+	void GetDirection();
 	void Move();
 
-	void handleAnimation();
-	void RunAnimations();
+	void HandleAnimation();
+	void HandleInput();
 	void Attack();
 
 
 private:
 
-
-	//Az::CP_BoxCollider2D m_Collider;
 	Az::B2_BoxCollider m_Collider;
 
 	glm::vec3 m_Direction = GLM_VEC3_ZERO;
@@ -65,6 +68,8 @@ private:
 	Az::Texture m_Texture;
 
 	bool m_IsFlippedX = false;
+
+
 
 private:
 
@@ -85,4 +90,5 @@ private:
 	bool m_IsMoving = false;
 	float m_CurrentFrameAttk = 0;;
 	float m_AttackTimer = 1.2f;
+	bool m_IsInventory = false;
 };

@@ -4,6 +4,8 @@
 
 #include <glm/glm.hpp>
 
+#include <UI/ImGuiLayer.h>
+
 #include <Buffers/Buffers.h>
 
 #include <Renderer/Shader.h>
@@ -26,7 +28,6 @@ namespace Az
 
         static void BeginBatch();
         static void EndBatch();
-        static void Flush();
 
         // QUICK functions
         static void DrawQuad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, float degree = 0);
@@ -40,10 +41,13 @@ namespace Az
         static void DrawRect(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, float degree = 0, float thickness = 2.5f);
         static void DrawRect(Az::Rect& dst, const glm::vec4& color, float thickness = 2.5f);
 
+        // color needs to be in 0 to 1 range
+        static void RenderText(const std::string& text, glm::vec3 position, ImFont* font, const glm::vec4& color);
+
 
         inline static bool batchRunning() { return m_IsBatchRunning; }
 
-        static void ResetStats();
+
 
         struct Stats
         {
@@ -54,6 +58,10 @@ namespace Az
         static const Stats& GetStats();
 
     private:
+
+        static void ResetStats();
+        static void Flush();
+
         struct Vertex
         {
             glm::vec3 Position;
