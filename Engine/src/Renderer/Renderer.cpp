@@ -496,10 +496,11 @@ namespace Az
         AZ_Assert(Az::ImGuiLayer::IsReady() != false, "ImGUI is not initialized!!");
         AZ_Assert(font != nullptr, "Font is nullptr!!");
 
-        uint8_t r = 255 / color.r;
-        uint8_t g = 255 / color.g;
-        uint8_t b = 255 / color.b;
-        uint8_t a = 255 / color.a;
+        uint8_t r = static_cast<uint8_t>(color.r * 255.0f);
+        uint8_t g = static_cast<uint8_t>(color.g * 255.0f);
+        uint8_t b = static_cast<uint8_t>(color.b * 255.0f);
+        uint8_t a = static_cast<uint8_t>(color.a * 255.0f);
+
 
         ImGui::GetForegroundDrawList()->AddText(
             font, 

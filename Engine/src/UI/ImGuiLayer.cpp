@@ -72,7 +72,7 @@ namespace Az
 	bool ImGuiLayer::MouseIsOverUI()
 	{
 
-		return false;
+		return (ImGui::IsWindowHovered(ImGuiHoveredFlags_AnyWindow) || ImGui::IsAnyItemHovered());
 	}
 }
 

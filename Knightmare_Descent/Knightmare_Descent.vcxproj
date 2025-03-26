@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application\Application.cpp" />
+    <ClCompile Include="src\Entities\OrcEnemy.cpp" />
     <ClCompile Include="src\Entities\zPlayer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Managers\zAnimationManager.cpp" />
@@ -151,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\Application.h" />
+    <ClInclude Include="src\Entities\OrcEnemy.h" />
     <ClInclude Include="src\Entities\zPlayer.h" />
     <ClInclude Include="src\Managers\zAnimationManager.h" />
     <ClInclude Include="src\Managers\MapManager.h" />

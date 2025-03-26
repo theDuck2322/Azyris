@@ -85,6 +85,7 @@ void Inventory::Render()
         }
     }
 
+
     ImGui::End();
 }
 

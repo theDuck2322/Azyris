@@ -2,28 +2,26 @@
 
 #include <Azyris.h>
 #include <Managers/AnimationManager.h>
-#include <UI/Inventory.h>
 
-enum class PlayerAnimationType
+enum class OrcAnimationType
 {
 	IDLE,
 	WALK,
 	ATTACK01,
 	ATTACK02,
-	ATTACK03,
 	HURT,
 	DEATH
 };
 
-class zPlayer
+class OrcEnemy
 {
-public: // what this class has to offer
-	zPlayer() = default;
+public:
 
-	void Start();
+	OrcEnemy() = default;
+
+	void Start(const glm::vec3& position);
 	void Update();
 	void Render();
-	void RenderUI();
 
 	inline Az::Rect& GetDST() { return m_Dst; }
 	inline Az::Rect& GetHitboxClip() { return m_HitBoxclip; }
@@ -34,26 +32,11 @@ public: // what this class has to offer
 
 	inline Az::Texture& GetTexture() { return m_Texture; }
 
-	inline bool playerFlipped() { return m_IsFlippedX; }
-
-public: // temporary variables
-
-	float Health = 100;
-	float Speed = 500;
-	
-	Inventory m_Inventory;
-
-
 private: // A section for private function
-
 	void InitAnimManager();
 	void InitAnimations();
-	void GetDirection();
-	void Move();
 
 	void HandleAnimation();
-	void HandleInput();
-	void Attack();
 
 
 private: // basic entity variables
@@ -70,25 +53,17 @@ private: // basic entity variables
 	bool m_IsFlippedX = false;
 
 
-
 private: // Animation and states
-
 
 	Az::AnimationManager m_AnimManager;
 
-	PlayerAnimationType m_AnimType;
+	//PlayerAnimationType m_AnimType;
 
 	Az::AnimationInfo m_Idle;
 	Az::AnimationInfo m_Walk;
 	Az::AnimationInfo m_Attack01;
 	Az::AnimationInfo m_Attack02;
-	Az::AnimationInfo m_Attack03;
 	Az::AnimationInfo m_Hurt;
 	Az::AnimationInfo m_Death;
 
-	bool m_IsAttacking = false;
-	bool m_IsMoving = false;
-	float m_CurrentFrameAttk = 0;;
-	float m_AttackTimer = 1.2f;
-	bool m_IsInventory = false;
 };

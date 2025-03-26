@@ -27,6 +27,9 @@ namespace Az
 		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
 		const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
 
+		inline float GetWidth() { return m_Size.x; }
+		inline float GetHeight() { return m_Size.y; }
+
 	private:
 		void RecalculateViewMatrix();
 	private:

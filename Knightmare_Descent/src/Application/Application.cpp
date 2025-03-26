@@ -98,9 +98,12 @@ void Application::Run()
 	m_Player.Start();
 	m_Player.SetTexture(texture);
 
+	OrcEnemy enemy;
+	enemy.Start(glm::vec3(100, 100, -0.5));
+	enemy.SetTexture("Knightmare_Descent/Assets/Entities/Orc.png");
+
 	Az::ImGuiLayer::InitImGUI(&m_Window);
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
-
 	ImFontConfig font_cfg;
 	font_cfg.SizePixels = 64.0f; // Set the desired font size
 
@@ -132,13 +135,14 @@ void Application::Run()
 		// GAME OBJECTS UPDATE HERE:
 
 		m_Player.Update();
-		glm::vec3 pos = m_Player.GetDST().Position - (m_Camera.GetSize() / 2.0f);
-		m_Camera.SetPosition(pos);
- 
+		m_Camera.SetPosition(m_Player.GetDST().Position - (m_Camera.GetSize() / 2.0f));
+		enemy.Update();
+
 		// GAME DRAWING HERE
 		Az::Renderer::BeginBatch(); // start batch
 
 		m_Player.Render();
+		enemy.Render();
 		m_World.RenderMap();
 
 		Az::Renderer::EndBatch(); // end batch
@@ -148,10 +152,14 @@ void Application::Run()
 
 		m_Player.RenderUI();
 
-		Az::Renderer::RenderText(std::to_string(int(1.0 / Az::Timer::deltaTime)), glm::vec3(0), biggerFont, glm::vec4(1, 0, 1, 1));
+		Az::Renderer::RenderText(std::to_string(int(1.0 / Az::Timer::deltaTime)),
+			glm::vec3(0), 
+			biggerFont, 
+			glm::vec4(1, 1, 1, 1));
 
 		Az::ImGuiLayer::Render();
 
+		
 		m_Window.SwapBuffers();
 
 	}

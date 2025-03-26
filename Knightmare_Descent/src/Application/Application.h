@@ -3,6 +3,7 @@
 #include <Azyris.h>
 #include <zPlayer.h>
 #include <Managers/MapManager.h>
+#include <OrcEnemy.h>
 
 class Application
 {
@@ -23,4 +24,6 @@ private: // Game stuff
 	MapManager m_World;
 
 	zPlayer m_Player;
+
+	std::vector<OrcEnemy> m_OrcEnemies;
 };

@@ -40,6 +40,11 @@ void zPlayer::RenderUI()
 
 }
 
+
+// PRIVATE FUNCTION IMPLEMENTATION
+
+
+
 void zPlayer::GetDirection()
 {
 	m_Direction = glm::vec3(0);
@@ -145,7 +150,7 @@ void zPlayer::HandleInput()
 
 void zPlayer::Attack()
 {
-	if (Az::Input::GetMouseButtonDown(1) && !m_IsAttacking)
+	if (Az::Input::GetMouseButtonDown(1) && !m_IsAttacking && !Az::ImGuiLayer::MouseIsOverUI())
 	{
 		m_IsAttacking = true;
 		m_AnimType = PlayerAnimationType::ATTACK01;
